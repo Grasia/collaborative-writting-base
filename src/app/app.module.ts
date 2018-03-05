@@ -16,6 +16,8 @@ import { UserService } from './user.service';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { AdminComponent } from './admin/admin.component';
 import { ToggleComponent } from './toggle/toggle.component';
+import { DocService } from './doc.service';
+
 
 import {
   MatAutocompleteModule,
@@ -111,7 +113,7 @@ export class MaterialModule {}
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, DocService],
   bootstrap: [AppComponent],
 
 })
