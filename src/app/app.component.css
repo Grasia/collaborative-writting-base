@@ -1,0 +1,35 @@
+
+.general{
+    
+text-align: center;
+        
+}
+
+.cuerpo{
+    
+    text-align: center;
+    margin-top: 200px;
+    
+}
+
+nav a{
+  vertical-align: middle;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-block;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 25px;
+}
+nav a:visited, a:link {
+  color: #607D8B;
+}
+nav a:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+nav a.active {
+  color: #039be5;
+}
+

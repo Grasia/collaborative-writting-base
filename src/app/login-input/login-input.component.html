@@ -1,0 +1,17 @@
+
+<form class="example-form">
+    Aqui va un formulario de login hecho con la libreria materials.
+    <br><br>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Usuario" #usuario>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Contraseña" type=password #contrasena>
+  </mat-form-field>
+    <br>
+  <button (click)="login(usuario.value, contrasena.value)" class='login' mat-raised-button>Login</button>
+    
+    <div *ngIf="error">Error con usuario o contraseña</div>
+
+</form>

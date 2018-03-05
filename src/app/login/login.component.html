@@ -1,0 +1,14 @@
+<div>
+    <h1>¡Pagina de login!</h1>
+    
+</div>
+
+    <app-toggle *ngIf="isLog()"></app-toggle>
+
+<div class = 'formulario'>
+    
+    <app-login-input *ngIf="!isLog()"></app-login-input>
+    <button class='login' *ngIf="isLog()" (click)="logout()" class='login' mat-raised-button>Logout</button>
+
+    
+</div>

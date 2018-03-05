@@ -1,0 +1,8 @@
+
+<div *ngIf="!isLog()">
+    <h1>¡Haz Login para ver este apartado!</h1>
+    <app-login-input></app-login-input>
+</div>
+
+<app-usuario *ngIf="isAdmin()=='user'"></app-usuario>
+<app-admin *ngIf="isAdmin()=='admin'"></app-admin>
