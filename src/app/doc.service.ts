@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import {Doc} from './doc'
 
 @Injectable()
@@ -13,7 +14,11 @@ export class DocService {
     
     
     
-    
+    getDoc(id:number): Doc{
+        
+        return this.documentos[id-1];
+        
+    }
     
     
 }

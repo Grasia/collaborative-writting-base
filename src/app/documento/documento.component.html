@@ -1,0 +1,12 @@
+<div *ngIf=isLog()>
+    <h1 *ngIf="doc">Estas dentro de un documento</h1>
+    <h2>{{doc.id}}</h2>
+    <h2>{{doc.nombre}}</h2>
+    <h2>{{doc.creador}}</h2>
+    <h2>{{doc.participante}}</h2>
+</div>
+<div *ngIf="!isLog()">
+
+    <h1>No puedes ver ningun documento si no has hecho login</h1>
+
+</div>

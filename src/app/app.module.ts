@@ -17,6 +17,7 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { AdminComponent } from './admin/admin.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { DocService } from './doc.service';
+import { DocumentoComponent } from './documento/documento.component'
 
 
 import {
@@ -103,7 +104,8 @@ export class MaterialModule {}
     LoginInputComponent,
     UsuarioComponent,
     AdminComponent,
-    ToggleComponent
+    ToggleComponent,
+    DocumentoComponent
   ],
   imports: [
     BrowserModule,

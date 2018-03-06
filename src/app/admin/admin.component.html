@@ -1,9 +1,13 @@
 <h1>¡Si ves esto, tu rol es de Administrador!</h1>
 
-<div *ngIf="docService.documentos.length">
+<div class="pantalla" *ngIf="docService.documentos.length">
 
     <h2>Documentos</h2>
     
-    <div *ngFor='let doc of docService.documentos' ><a *ngIf="comprueba(doc)">{{doc.nombre}}</a></div>
+    <a routerLink = "/documento/{{doc.id}}" *ngFor='let doc of docService.documentos' >
+        <div *ngIf="comprueba(doc)" class="documento">
+            <h4>{{doc.nombre}}</h4>
+        </div>
+    </a>
 
 </div>
