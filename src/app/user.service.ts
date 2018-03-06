@@ -1,31 +1,32 @@
 import { Injectable } from '@angular/core';
+import { User } from './user'
 
 @Injectable()
 export class UserService {
-  rol: string="";
-  user: string="";
   login:boolean=false;
-  
-  
-  add(user: string, admin:string) {
+  user: User = {nombre:'', rol:''};
+
+  add(nombre: string, rol:string) {
   
     this.login=true;
-    this.rol = admin;
-    this.user = user;
+    this.user.rol = rol;
+    this.user.nombre = nombre;
 
   }
 
   isAdmin(){
     
-    return this.rol;
+      if (this.user.rol == 'admin') return true;
+      return false;
+    
   
   }
   
   logout(){
   
     this.login=false;
-    this.rol = "";
-    this.user="";
+    this.user.rol = "";
+    this.user.nombre="";
 
   
   }
@@ -38,10 +39,17 @@ export class UserService {
   
   setRol(rol:string){
   
-    this.rol=rol;
+    this.user.rol=rol;
   
   }
 
+
+  getName(){
+      
+      return this.user.nombre;
+      
+  }
+    
 
 }
 

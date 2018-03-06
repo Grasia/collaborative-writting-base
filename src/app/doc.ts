@@ -1,6 +1,6 @@
 export class Doc {
     id: number;
-    name: string;
+    nombre: string;
     creador: string;
     participante: string;
 }

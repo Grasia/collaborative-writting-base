@@ -22,12 +22,12 @@ export class LoginInputComponent{
     
     login(user, pass) : void{
             this.error=false;
-        if(user == "user" && pass == "user"){
+        if(user == "jorge" && pass == "jorge"){
         
             this.log = true;
-            this.userService.add(user, "user");
+            this.userService.add(user, "admin");
         
-        }else if(user == "admin" && pass == "admin"){
+        }else if(user == "carlos" && pass == "carlos"){
         
             this.log = true;
             this.userService.add(user, "admin");

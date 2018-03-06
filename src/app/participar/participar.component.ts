@@ -24,7 +24,7 @@ export class ParticiparComponent implements OnInit{
   
   }
   
-  isAdmin() : string{
+  isAdmin() : boolean{
     
         
     return this.userService.isAdmin();

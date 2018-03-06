@@ -1,1 +1,9 @@
 <h1>¡Si ves esto, tu rol es de Administrador!</h1>
+
+<div *ngIf="docService.documentos.length">
+
+    <h2>Documentos</h2>
+    
+    <div *ngFor='let doc of docService.documentos' ><a *ngIf="comprueba(doc)">{{doc.nombre}}</a></div>
+
+</div>

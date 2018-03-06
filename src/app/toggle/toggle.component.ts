@@ -16,7 +16,7 @@ export class ToggleComponent implements OnInit{
     ngOnInit(){
   
     
-        if(this.userService.isAdmin()=="admin"){
+        if(this.userService.isAdmin()){
             this.checked = true;
         }else this.checked = false;
         this.color = "primary"
@@ -43,7 +43,7 @@ export class ToggleComponent implements OnInit{
     
     changeRol():void{
     
-        if(this.userService.isAdmin() == "admin"){
+        if(this.userService.isAdmin()){
         
             this.userService.setRol("user");
         

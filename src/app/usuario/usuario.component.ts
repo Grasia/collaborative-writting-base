@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DocService } from '../doc.service';
-
+import { UserService } from '../user.service';
 @Component({
   selector: 'app-usuario',
   templateUrl: './usuario.component.html',
@@ -8,7 +8,8 @@ import { DocService } from '../doc.service';
 })
 export class UsuarioComponent implements OnInit{
   
-    constructor(private docService: DocService){};
+    constructor(private docService: DocService,
+                private userService: UserService){};
   
     ngOnInit(){
         
@@ -16,9 +17,9 @@ export class UsuarioComponent implements OnInit{
         
     }
     
-    comprueba(doc, rol): boolean{
+    comprueba(doc): boolean{
         
-        if(doc == rol) return true;
+        if(doc.participante == this.userService.getName()) return true;
         return false;
         
         

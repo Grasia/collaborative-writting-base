@@ -3,7 +3,7 @@
 
     <h2>Documentos</h2>
     
-    <div *ngFor='let doc of docService.documentos'><div *ngIf="comprueba(doc.creador , 'usuario')">{{doc.nombre}}</div></div>
+    <div *ngFor='let doc of docService.documentos'><div *ngIf="comprueba(doc)">{{doc.nombre}}</div></div>
 
 </div>
     
