@@ -15,6 +15,7 @@ import { UserService } from '../user.service'
 export class DocumentoComponent implements OnInit{
   
     @Input() doc: Doc;
+    error: string;
     
     constructor(private route: ActivatedRoute,
                private docService: DocService,
@@ -25,6 +26,7 @@ export class DocumentoComponent implements OnInit{
     ngOnInit(){
         
         this.doc = this.docService.getDoc(+this.route.snapshot.paramMap.get('id'));
+        this.docService.activarDoc(this.doc);
        /* const documento = +this.route.snapshot.paramMap.get('id');
         this.docService.getDoc(documento)
             .subscribe(doc => this.doc = doc);
@@ -35,6 +37,42 @@ export class DocumentoComponent implements OnInit{
         
         
         return this.userService.isLog();
+        
+    }
+    
+    etapa(){
+        
+        return this.doc.etapa;
+        
+        
+    }
+    
+    mostrar(){
+        
+        if(this.isLog()){
+            
+            if (this.userService.isAdmin()){
+                
+                if(this.doc.creador == this.userService.getName()){
+                    
+                    return true;
+                    
+                }else this.error = "No eres administrador de este documento";
+                
+            }else{
+                
+                if(this.doc.participante == this.userService.getName()){
+                    
+                    return true;
+                    
+                }else this.error = "No eres usuario de este documento"
+                
+            }
+            
+            
+        }else this.error = "No has hecho login"
+        
+        return false;
         
     }
   

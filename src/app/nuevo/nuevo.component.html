@@ -1,0 +1,13 @@
+<h1>Crear documento nuevo</h1>
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Titulo" #titulo>
+  </mat-form-field>
+
+    <br>
+  <button (click)="crear(titulo.value)" class='crear' mat-raised-button>Crear</button>
+    
+    <div *ngIf="error == true">El documento necesita un titulo</div>
+
+</form>

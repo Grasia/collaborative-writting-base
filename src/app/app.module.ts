@@ -17,8 +17,14 @@ import { UsuarioComponent } from './usuario/usuario.component';
 import { AdminComponent } from './admin/admin.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { DocService } from './doc.service';
-import { DocumentoComponent } from './documento/documento.component'
-
+import { DocumentoComponent } from './documento/documento.component';
+import { RevisionComponent } from './revision/revision.component';
+import { RedaccionComponent } from './redaccion/redaccion.component';
+import { LlamadaComponent } from './llamada/llamada.component';
+import { FinalComponent } from './final/final.component';
+import { CambiosComponent } from './cambios/cambios.component';
+import { AnalisisComponent } from './analisis/analisis.component';
+import { NuevoComponent } from './nuevo/nuevo.component'
 
 import {
   MatAutocompleteModule,
@@ -56,6 +62,7 @@ import {
 } from '@angular/material';
 
 
+
 @NgModule({
   exports: [
     CdkTableModule,
@@ -91,7 +98,7 @@ import {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-  ]
+  ],
 })
 export class MaterialModule {}
 
@@ -105,7 +112,14 @@ export class MaterialModule {}
     UsuarioComponent,
     AdminComponent,
     ToggleComponent,
-    DocumentoComponent
+    DocumentoComponent,
+    RevisionComponent,
+    RedaccionComponent,
+    LlamadaComponent,
+    FinalComponent,
+    CambiosComponent,
+    AnalisisComponent,
+    NuevoComponent
   ],
   imports: [
     BrowserModule,

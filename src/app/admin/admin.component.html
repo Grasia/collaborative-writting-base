@@ -4,10 +4,17 @@
 
     <h2>Documentos</h2>
     
-    <a routerLink = "/documento/{{doc.id}}" *ngFor='let doc of docService.documentos' >
-        <div *ngIf="comprueba(doc)" class="documento">
+    <a class = "doc" routerLink = "/documento/{{doc.id}}" *ngFor='let doc of docService.documentos' >
+        <div  class="documento" *ngIf="comprueba(doc)">
             <h4>{{doc.nombre}}</h4>
         </div>
     </a>
+    <br>
+    <button routerLink="/nuevo" class='crear' mat-raised-button>Crear</button>
 
 </div>
+
+
+
+
+

@@ -3,4 +3,6 @@ export class Doc {
     nombre: string;
     creador: string;
     participante: string;
+    texto:string;
+    etapa:string;
 }

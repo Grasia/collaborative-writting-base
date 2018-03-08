@@ -1,12 +1,15 @@
-<div *ngIf=isLog()>
-    <h1 *ngIf="doc">Estas dentro de un documento</h1>
-    <h2>{{doc.id}}</h2>
-    <h2>{{doc.nombre}}</h2>
-    <h2>{{doc.creador}}</h2>
-    <h2>{{doc.participante}}</h2>
+<div *ngIf="mostrar()">
+    <h1 >Titulo del documento: {{doc.nombre}}</h1>
+    <div class = 'texto'>{{doc.texto}}</div>
+    <app-revision *ngIf="doc.etapa == 'revision'"></app-revision>
+    <app-redaccion *ngIf="doc.etapa == 'redaccion'"></app-redaccion>
+    <app-llamada *ngIf="doc.etapa == 'llamada'"></app-llamada>
+    <app-final *ngIf="doc.etapa == 'final'"></app-final>
+    <app-cambios *ngIf="doc.etapa == 'cambios'"></app-cambios>
+    <app-analisis *ngIf="doc.etapa == 'analisis'"></app-analisis>
 </div>
-<div *ngIf="!isLog()">
+<div *ngIf="!mostrar()">
 
-    <h1>No puedes ver ningun documento si no has hecho login</h1>
+    <h1>{{error}}</h1>
 
 </div>

@@ -5,15 +5,36 @@
     
 }
 
-a {
-  text-decoration: none;
-    text-align: center;
+.crear{
     
+  text-align: center;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-block;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 25px;
+  color: #607D8B;
 }
-*, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+.crear:visited, .crear:link {
+  color: #607D8B;
+}
+.crear:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+.crear.active {
+  color: #039be5;
+}
+
+
+
+.doc {
+    text-decoration: none;
+    text-align: center;
+    margin: 5px;
+    display: inline-block;
 }
 
 .documento {

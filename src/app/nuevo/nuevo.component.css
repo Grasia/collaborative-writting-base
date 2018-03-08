@@ -1,0 +1,42 @@
+.example-form {
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.example-full-width {
+    margin-top: 10px;
+  width: 100%;
+}
+
+.login{
+    
+    color: #607D8B;
+    
+}
+
+.crear{
+    
+  text-align: center;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-block;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 25px;
+  color: #607D8B;
+}
+.crear:visited, .crear:link {
+  color: #607D8B;
+}
+.crear:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+.crear.active {
+  color: #039be5;
+}
