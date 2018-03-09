@@ -5,28 +5,10 @@
     
 }
 
-.crear{
-    
-  text-align: center;
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 20px;
-  display: inline-block;
-  background-color: white;
-  border-radius: 4px;
-  font-size: 25px;
+.boton{
   color: #607D8B;
 }
-.crear:visited, .crear:link {
-  color: #607D8B;
-}
-.crear:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}
-.crear.active {
-  color: #039be5;
-}
+
 
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 @Component({
   selector: 'app-final',
   templateUrl: './final.component.html',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinalComponent implements OnInit {
 
-  constructor() { }
+    constructor(private router:Router,
+                private userService:UserService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
+    documentos():void{
+        
+        this.router.navigate(['/participar'], { replaceUrl: true });
+        
+    }
+    
 }

@@ -1,12 +1,18 @@
 <div *ngIf="mostrar()">
-    <h1 >Titulo del documento: {{doc.nombre}}</h1>
-    <div class = 'texto'>{{doc.texto}}</div>
-    <app-revision *ngIf="doc.etapa == 'revision'"></app-revision>
-    <app-redaccion *ngIf="doc.etapa == 'redaccion'"></app-redaccion>
-    <app-llamada *ngIf="doc.etapa == 'llamada'"></app-llamada>
-    <app-final *ngIf="doc.etapa == 'final'"></app-final>
-    <app-cambios *ngIf="doc.etapa == 'cambios'"></app-cambios>
-    <app-analisis *ngIf="doc.etapa == 'analisis'"></app-analisis>
+    <div *ngIf="isAdmin()">
+        <app-revision *ngIf="etapa() == 'revision'"></app-revision>
+        <app-redaccion *ngIf="etapa() == 'redaccion'"></app-redaccion>
+        <app-llamada *ngIf="etapa() == 'llamada'"></app-llamada>
+        <app-final *ngIf="etapa() == 'final'"></app-final>
+        <app-cambios *ngIf="etapa() == 'cambios'"></app-cambios>
+        <app-analisis *ngIf="etapa() == 'analisis'"></app-analisis>
+    </div>
+    <div *ngIf="!isAdmin()">
+        
+        <app-revision></app-revision>
+    
+    </div>
+    
 </div>
 <div *ngIf="!mostrar()">
 

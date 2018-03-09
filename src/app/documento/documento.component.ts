@@ -47,6 +47,12 @@ export class DocumentoComponent implements OnInit{
         
     }
     
+    isAdmin(){
+        
+        return this.userService.isAdmin();
+        
+    }
+    
     mostrar(){
         
         if(this.isLog()){

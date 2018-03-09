@@ -19,6 +19,18 @@ export class DocService {
     
     activo: Doc;
     
+    siguienteFase(fase:string):void{
+        
+        this.activo.etapa = fase;
+        this.documentos[this.activo.id-1].etapa = fase;
+        
+    }
+    
+    getTexto():string{
+        
+        return this.activo.texto;
+        
+    }
     
     getDoc(id:number): Doc{
         
@@ -29,6 +41,12 @@ export class DocService {
     activarDoc(doc: Doc): void{
         
         this.activo = doc;
+        
+    }
+    
+    getFase():string{
+        
+        return this.activo.etapa;
         
     }
     

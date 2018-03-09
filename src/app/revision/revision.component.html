@@ -1,1 +1,20 @@
 <h1>Esta es la vista de revision</h1>
+<div class = 'bloque'>
+    <div class = 'margenIz'>Margen izquierdo<br>
+        <div class = 'fase'>
+            <button (click)="documentos()" class='boton' mat-raised-button>Volver</button>
+        </div>
+    </div>
+    <div class = 'centro'>
+        Centro
+        <app-texto></app-texto>
+    </div>
+    <div class = 'margenDr'>Margen derecho<br>
+    
+        <app-opinar *ngIf="mostrar()"></app-opinar>
+        <div class="fase" *ngIf = "isAdmin()">
+            <button (click)="siguiente()" class='boton' mat-raised-button>Siguiente fase</button>
+        </div>    
+    </div>
+    
+</div>

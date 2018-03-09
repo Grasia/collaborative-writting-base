@@ -24,7 +24,11 @@ import { LlamadaComponent } from './llamada/llamada.component';
 import { FinalComponent } from './final/final.component';
 import { CambiosComponent } from './cambios/cambios.component';
 import { AnalisisComponent } from './analisis/analisis.component';
-import { NuevoComponent } from './nuevo/nuevo.component'
+import { NuevoComponent } from './nuevo/nuevo.component';
+import { TextoComponent } from './texto/texto.component';
+import { OpinarComponent } from './opinar/opinar.component';
+import { RedactarComponent } from './redactar/redactar.component';
+
 
 import {
   MatAutocompleteModule,
@@ -60,6 +64,8 @@ import {
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
+
+
 
 
 
@@ -99,6 +105,8 @@ import {
     MatToolbarModule,
     MatTooltipModule,
   ],
+
+  
 })
 export class MaterialModule {}
 
@@ -119,7 +127,11 @@ export class MaterialModule {}
     FinalComponent,
     CambiosComponent,
     AnalisisComponent,
-    NuevoComponent
+    NuevoComponent,
+    TextoComponent,
+    OpinarComponent,
+    RedactarComponent
+      
   ],
   imports: [
     BrowserModule,

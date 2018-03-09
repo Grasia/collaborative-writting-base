@@ -14,10 +14,57 @@ body {
   float: right;
 }
 
+.margenIz{
+    
+    width: 20%;
+    float: left;
+    margin-right: 5%;
+    display: inline-block;
+}
+
+.centro{
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    width: 45%;
+    display: inline-block;
+    
+}
+.margenDr{
+    display: inline-block;
+    margin-left: 5%;
+    width: 20%;
+    float: right;
+    
+}
 
 .texto{
    
     display: inline-block;
-    max-width: 900px;
+    
+}
+
+.boton{
+    
+  text-align: center;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 20px;
+  display: inline-block;
+  background-color: white;
+  border-radius: 4px;
+  font-size: 25px;
+  color: #607D8B;
+
+}
+
+.boton:visited, .boton:link {
+  color: #607D8B;
+}
+.boton:hover {
+  color: #039be5;
+  background-color: #CFD8DC;
+}
+.boton.active {
+  color: #039be5;
 }
 /* You can add global styles to this file, and also import other style files */

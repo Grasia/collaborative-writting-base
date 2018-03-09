@@ -1,1 +1,18 @@
 <h1>Esta es la vista de analisis</h1>
+<div class = 'bloque'>
+    <div class = 'margenIz'>Margen izquierdo<br>
+        <div class = 'fase'>
+            <button (click)="documentos()" class='boton' mat-raised-button>Volver</button>
+        </div>
+    </div>
+    
+    <div class = 'centro'> Centro
+    </div>
+    
+    <div class = 'margenDr'>Margen derecho 
+        <div class="fase" *ngIf = "isAdmin()">
+            <button (click)="siguiente()" class='boton' mat-raised-button>Siguiente fase</button>
+        </div>    
+    </div>
+    
+</div>
