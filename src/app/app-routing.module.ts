@@ -6,7 +6,10 @@ import { LoginComponent } from './login/login.component';
 import { ParticiparComponent } from './participar/participar.component';
 import { DocumentoComponent } from './documento/documento.component';
 import { NuevoComponent } from './nuevo/nuevo.component';
-  
+import { RevisionComponent} from './revision/revision.component';
+import { LlamadaComponent} from './llamada/llamada.component';
+import { AnalisisComponent} from './analisis/analisis.component';
+
 const routes: Routes = [
     
     { path: '', redirectTo: '/inicio', pathMatch: 'full' },
@@ -14,7 +17,10 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent},
     { path: 'participar', component: ParticiparComponent},
     { path: 'documento/:id', component: DocumentoComponent},
-    { path: 'nuevo', component: NuevoComponent}
+    { path: 'nuevo', component: NuevoComponent},
+    { path: 'texto', component: RevisionComponent},
+    { path: 'analisis', component: AnalisisComponent},
+    { path: 'llamada', component: LlamadaComponent}
 ];
 
 @NgModule({

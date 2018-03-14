@@ -1,0 +1,37 @@
+
+.top{
+    
+    display: inline-block;
+    width: 100%;
+    
+}
+
+.izq{
+    
+    display: inline-block;
+    float: left;
+    text-align: left
+}
+
+.der{
+    
+    float: right;
+    
+    
+}
+
+.bot{
+    
+    text-align: left;
+    
+    
+}
+
+.mat-tab-label{
+    
+    
+    font-size: 30px;
+    
+    
+}
+

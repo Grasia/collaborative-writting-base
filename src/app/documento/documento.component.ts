@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Doc } from '../doc';
 import { DocService } from '../doc.service';
-import { UserService } from '../user.service'
+import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-documento',
@@ -19,7 +20,8 @@ export class DocumentoComponent implements OnInit{
     
     constructor(private route: ActivatedRoute,
                private docService: DocService,
-                 private userService: UserService
+                 private userService: UserService,
+                 private router:Router
                ){};
     
     
@@ -33,6 +35,14 @@ export class DocumentoComponent implements OnInit{
         */
     }
     
+    verDoc(){
+        
+        if(this.doc.etapa == 'analisis') this.router.navigate(['/'+this.doc.etapa], {replaceUrl: true});
+            else if(this.doc.etapa == 'llamada') this.router.navigate(['/'+ this.doc.etapa], {replaceUrl: true});
+                else this.router.navigate(['/texto'], { replaceUrl: true });
+           
+    }
+    
     isLog(){
         
         
@@ -44,6 +54,12 @@ export class DocumentoComponent implements OnInit{
         
         return this.doc.etapa;
         
+        
+    }
+    
+    getNombre(){
+        
+        return this.doc.nombre;
         
     }
     
@@ -79,6 +95,12 @@ export class DocumentoComponent implements OnInit{
         }else this.error = "No has hecho login"
         
         return false;
+        
+    }
+    
+    documentos(){
+        
+        this.router.navigate(['/participar'], { replaceUrl: true });
         
     }
   

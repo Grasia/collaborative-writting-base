@@ -1,3 +1,62 @@
+<div class = "top">
+    <div class = "izq">
+        <button (click)="documentos()" class='boton' mat-raised-button>Volver</button>
+        <h2> Titulo: {{getNombre()}} </h2>
+        <h3> Fase: {{etapa()}} </h3>
+    </div>
+    
+    
+    <div class = "der">
+    
+        <button (click)="verDoc()" class='boton' mat-raised-button>Ver documento</button>
+    
+    </div>
+</div>
+
+<div class = "bot">
+    
+    <mat-tab-group>
+        <mat-tab class="cosa" label="Información">
+            <br><br>
+            <div>
+                Nombre: {{getNombre()}}<br><br>
+                Descripcion: <br><br>
+                Referencias: <br><br>
+            </div>
+        </mat-tab>
+        <mat-tab label="Fases">
+            <br><br>
+            <div>
+                Fechas especificadas para las diferentes fases del documento.
+            </div>
+        </mat-tab>
+        <mat-tab label="Analisis">
+            <br><br>
+            <div>
+                Resumenes de votos, estadisticas etc
+            </div>
+        </mat-tab>
+        <mat-tab label = "Versiones">
+            <br><br>
+            <div>
+                Versiones del documento
+            </div>
+        </mat-tab>
+        <mat-tab label = "Admins">
+            <br><br>
+            <div>
+                Administradores del documento
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+
+</div>
+
+
+
+
+
 <div *ngIf="mostrar()">
     <div *ngIf="isAdmin()">
         <app-revision *ngIf="etapa() == 'revision'"></app-revision>
