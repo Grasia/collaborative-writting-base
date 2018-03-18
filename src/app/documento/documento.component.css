@@ -1,20 +1,24 @@
 
 .top{
-    
+
+
     display: inline-block;
     width: 100%;
+    
     
 }
 
 .izq{
-    
-    display: inline-block;
+   
+    margin-top: 10px;
     float: left;
     text-align: left
 }
 
 .der{
     
+    
+ 
     float: right;
     
     
@@ -23,7 +27,7 @@
 .bot{
     
     text-align: left;
-    
+
     
 }
 
@@ -35,3 +39,20 @@
     
 }
 
+.example-form {
+
+    width: 250%;
+    float: left;
+  }
+  
+  .example-full-width {
+
+    width: 100%;
+  }
+  
+  .boton{
+      
+      color:#60708B;
+  
+
+  }

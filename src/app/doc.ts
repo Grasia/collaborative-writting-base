@@ -5,4 +5,6 @@ export class Doc {
     participante: string;
     texto:string;
     etapa:string;
+    descripcion: string;
+    referencias: string;
 }

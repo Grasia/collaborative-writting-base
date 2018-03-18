@@ -17,6 +17,7 @@ export class DocumentoComponent implements OnInit{
   
     @Input() doc: Doc;
     error: string;
+    editar: boolean;
     
     constructor(private route: ActivatedRoute,
                private docService: DocService,
@@ -25,14 +26,62 @@ export class DocumentoComponent implements OnInit{
                ){};
     
     
+    change(nombre, des, ref){
+
+        this.doc.nombre = nombre;
+        this.doc.descripcion = des;
+        this.doc.referencias = ref;
+        this.docService.activo = this.doc;
+        this.docService.actualizar();
+        this.editar = false;
+
+
+
+    }
+
     ngOnInit(){
         
         this.doc = this.docService.getDoc(+this.route.snapshot.paramMap.get('id'));
         this.docService.activarDoc(this.doc);
+        this.editar = false;
        /* const documento = +this.route.snapshot.paramMap.get('id');
         this.docService.getDoc(documento)
             .subscribe(doc => this.doc = doc);
         */
+    }
+    
+    edit(){
+
+        this.editar = true;
+
+    }
+
+    noEdit(){
+
+        this.editar = false;
+
+    }
+
+    isEditar(){
+
+        return this.editar;
+
+    }
+
+
+    getRefs(){
+        
+        return this.doc.referencias;
+        
+        
+    }
+    
+    
+    getDes(){
+        
+        return this.doc.descripcion;
+        
+        
     }
     
     verDoc(){

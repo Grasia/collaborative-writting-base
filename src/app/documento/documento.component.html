@@ -1,57 +1,85 @@
-<div class = "top">
-    <div class = "izq">
-        <button (click)="documentos()" class='boton' mat-raised-button>Volver</button>
-        <h2> Titulo: {{getNombre()}} </h2>
-        <h3> Fase: {{etapa()}} </h3>
+
+    <div class = "top">
+        <div class = "izq">
+            <button (click)="documentos()" class='boton' mat-raised-button>Volver</button>
+            <h2> Titulo: {{getNombre()}} </h2>
+            <h3> Fase: {{etapa()}} </h3>
+        </div>
+
+
+        <div class = "der">
+
+            <button (click)="verDoc()" class='boton' mat-raised-button>Ver documento</button>
+
+        </div>
     </div>
-    
-    
-    <div class = "der">
-    
-        <button (click)="verDoc()" class='boton' mat-raised-button>Ver documento</button>
-    
+
+    <div class = "bot">
+
+        <mat-tab-group>
+            <mat-tab class="cosa" label="Información">
+                
+                <div class="izq" *ngIf = "!isEditar()">
+                    
+                    Nombre: {{getNombre()}}<br><br> 
+                    Descripcion: {{getDes()}}<br><br>
+                    Referencias: {{getRefs()}}<br><br>
+                </div>
+                <div class = "izq" *ngIf = "isEditar()">
+                    
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="{{getNombre()}}" #nombre>
+                        </mat-form-field><br><br>
+                    
+                        <mat-form-field class="example-full-width">
+                            <textarea matInput placeholder="{{getDes()}}" matTextareaAutoresize matAutosizeMinRows= "2" matAutosizeMaxRows="5"  #des></textarea>
+                        </mat-form-field>
+                        <br><br>
+
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="{{getRefs()}}" #ref>
+                        </mat-form-field>
+                        <br><br>
+                        <button (click)="change(nombre.value, des.value, ref.value)" class='boton' mat-raised-button>Guardar</button>
+                        
+                    </form>
+
+
+                </div>
+                <div class="der">
+                    <button (click)="edit()" *ngIf="!isEditar()" class='boton' mat-raised-button>Editar</button>
+                    <button (click)="noEdit()" *ngIf="isEditar()" class='boton' mat-raised-button>Cancelar</button>
+                </div>
+            </mat-tab>
+            <mat-tab label="Fases">
+                <br><br>
+                <div>
+                    Fechas especificadas para las diferentes fases del documento.
+                </div>
+            </mat-tab>
+            <mat-tab label="Analisis">
+                <br><br>
+                <div>
+                    Resumenes de votos, estadisticas etc
+                </div>
+            </mat-tab>
+            <mat-tab label = "Versiones">
+                <br><br>
+                <div>
+                    Versiones del documento
+                </div>
+            </mat-tab>
+            <mat-tab label = "Admins">
+                <br><br>
+                <div>
+                    Administradores del documento
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+
+
     </div>
-</div>
-
-<div class = "bot">
-    
-    <mat-tab-group>
-        <mat-tab class="cosa" label="Información">
-            <br><br>
-            <div>
-                Nombre: {{getNombre()}}<br><br>
-                Descripcion: <br><br>
-                Referencias: <br><br>
-            </div>
-        </mat-tab>
-        <mat-tab label="Fases">
-            <br><br>
-            <div>
-                Fechas especificadas para las diferentes fases del documento.
-            </div>
-        </mat-tab>
-        <mat-tab label="Analisis">
-            <br><br>
-            <div>
-                Resumenes de votos, estadisticas etc
-            </div>
-        </mat-tab>
-        <mat-tab label = "Versiones">
-            <br><br>
-            <div>
-                Versiones del documento
-            </div>
-        </mat-tab>
-        <mat-tab label = "Admins">
-            <br><br>
-            <div>
-                Administradores del documento
-            </div>
-        </mat-tab>
-    </mat-tab-group>
-
-
-</div>
 
 
 
