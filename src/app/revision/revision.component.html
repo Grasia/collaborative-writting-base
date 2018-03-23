@@ -1,4 +1,4 @@
-<h1>Esta es la vista de revision</h1>
+<h1>Esta es la vista de {{getFase()}}</h1>
 <div class = 'bloque'>
     <div class = 'margenIz'>Margen izquierdo<br>
         <div class = 'fase'>
@@ -13,7 +13,8 @@
     
         <app-opinar *ngIf="mostrar()"></app-opinar>
         <div class="fase" *ngIf = "isAdmin()">
-            <button (click)="siguiente()" class='boton' mat-raised-button>Siguiente fase</button>
+            <button (click)="siguiente()" *ngIf='!isFin()' class='boton' mat-raised-button>Siguiente fase</button><br>
+            <button (click)="fin()"  *ngIf='isCambios()' class='boton' mat-raised-button>Finalizar</button>
         </div>    
     </div>
     

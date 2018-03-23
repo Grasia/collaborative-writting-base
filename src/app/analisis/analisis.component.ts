@@ -18,7 +18,7 @@ export class AnalisisComponent implements OnInit {
 
     siguiente():void{
         
-        this.docService.siguienteFase('cambios');
+        this.router.navigate([this.docService.next()], { replaceUrl: true });
         
     }
     

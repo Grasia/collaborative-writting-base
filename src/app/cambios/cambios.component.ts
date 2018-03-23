@@ -17,7 +17,7 @@ export class CambiosComponent implements OnInit {
 
     siguiente():void{
         
-        this.docService.siguienteFase('revision');
+        this.router.navigate([this.docService.next()], { replaceUrl: true });
         
     }
     
@@ -29,7 +29,7 @@ export class CambiosComponent implements OnInit {
     
     fin():void{
         
-        this.docService.siguienteFase('final');
+        this.router.navigate([this.docService.last()], { replaceUrl: true });
         
     }
     

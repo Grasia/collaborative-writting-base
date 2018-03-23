@@ -17,7 +17,7 @@ export class RedaccionComponent implements OnInit {
     
     siguiente():void{
         
-        this.docService.siguienteFase('llamada');
+        this.router.navigate([this.docService.next()], { replaceUrl: true });
         
     }
     

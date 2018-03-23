@@ -81,28 +81,3 @@
 
     </div>
 
-
-
-
-
-<div *ngIf="mostrar()">
-    <div *ngIf="isAdmin()">
-        <app-revision *ngIf="etapa() == 'revision'"></app-revision>
-        <app-redaccion *ngIf="etapa() == 'redaccion'"></app-redaccion>
-        <app-llamada *ngIf="etapa() == 'llamada'"></app-llamada>
-        <app-final *ngIf="etapa() == 'final'"></app-final>
-        <app-cambios *ngIf="etapa() == 'cambios'"></app-cambios>
-        <app-analisis *ngIf="etapa() == 'analisis'"></app-analisis>
-    </div>
-    <div *ngIf="!isAdmin()">
-        
-        <app-revision></app-revision>
-    
-    </div>
-    
-</div>
-<div *ngIf="!mostrar()">
-
-    <h1>{{error}}</h1>
-
-</div>

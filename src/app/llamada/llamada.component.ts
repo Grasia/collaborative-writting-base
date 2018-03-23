@@ -17,12 +17,13 @@ export class LlamadaComponent implements OnInit {
 
     siguiente():void{
         
-        this.docService.siguienteFase('revision');
+        this.router.navigate([this.docService.next()], { replaceUrl: true });
         
     }
     
     documentos():void{
         
+
         this.router.navigate(['/participar'], { replaceUrl: true });
         
     }

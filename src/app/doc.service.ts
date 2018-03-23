@@ -32,6 +32,38 @@ export class DocService {
         
     }
 
+    next(){
+
+        if(this.activo.etapa == "redaccion"){
+             this.activo.etapa = 'llamada';
+             return '/llamada';
+        }else if (this.activo.etapa == 'llamada'){
+             this.activo.etapa = 'revision';
+             return '/texto';
+        }
+        else if (this.activo.etapa == 'revision'){
+             this.activo.etapa = 'analisis';
+             return '/analisis';
+        }
+        else if (this.activo.etapa == 'analisis'){
+             this.activo.etapa = 'cambios';
+             return '/texto';
+        }
+        else if (this.activo.etapa == 'cambios'){
+             this.activo.etapa = 'revision';
+             return '/texto';
+        }
+
+
+    }
+
+    last(){
+
+        this.activo.etapa = "fin";
+        return '/texto';
+
+    }
+
     getTexto():string{
         
         return this.activo.texto;

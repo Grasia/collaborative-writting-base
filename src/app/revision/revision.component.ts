@@ -31,15 +31,42 @@ export class RevisionComponent implements OnInit {
         
     }
     
+    isCambios():boolean{
+
+        if(this.docService.getFase() == 'cambios') return true;
+        else return false;
+
+    }
+
+    isFin():boolean{
+
+        if(this.docService.getFase() == 'fin') return true;
+        else return false;
+
+    }
+
+    getFase():string{
+
+        return this.docService.getFase();
+
+
+    }
+
     siguiente():void{
         
-        this.docService.siguienteFase('analisis');
+        this.router.navigate([this.docService.next()], { replaceUrl: true });
         
     }
     
     documentos():void{
         
         this.router.navigate(['/participar'], { replaceUrl: true });
+        
+    }
+
+    fin():void{
+        
+        this.router.navigate([this.docService.last()], { replaceUrl: true });
         
     }
 
