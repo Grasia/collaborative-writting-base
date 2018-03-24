@@ -22,6 +22,15 @@ export class AnalisisComponent implements OnInit {
         
     }
     
+    
+    getFase():string{
+
+        return this.docService.getFase();
+
+
+    }
+
+
     isAdmin():boolean{
         
         return this.userService.isAdmin();
@@ -30,7 +39,15 @@ export class AnalisisComponent implements OnInit {
     
     documentos():void{
         
-        this.router.navigate(['/participar'], { replaceUrl: true });
+        this.router.navigate(['/documento'], { queryParams: { id: this.getId() , x:'0' } });
         
     }
+
+    
+    getId():number{
+
+        return this.docService.getId();
+
+    }
+
 }

@@ -31,6 +31,7 @@ export class RevisionComponent implements OnInit {
         
     }
     
+
     isCambios():boolean{
 
         if(this.docService.getFase() == 'cambios') return true;
@@ -60,8 +61,15 @@ export class RevisionComponent implements OnInit {
     
     documentos():void{
         
-        this.router.navigate(['/participar'], { replaceUrl: true });
+        this.router.navigate(['/documento'], { queryParams: { id: this.getId(), x:'0' } });
         
+    }
+
+
+    getId():number{
+
+        return this.docService.getId();
+
     }
 
     fin():void{

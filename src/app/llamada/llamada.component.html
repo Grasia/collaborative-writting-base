@@ -11,7 +11,9 @@
     
     <div class = 'margenDr'>Margen derecho
         <div class="fase" *ngIf = "isAdmin()">
-            <button (click)="siguiente()" class='boton' mat-raised-button>Siguiente fase</button>
+            Fase:<a class = "doc" [routerLink] = "['/documento']" [queryParams] = "{id: getId() , x:'1'}">
+                {{getFase()}}
+            </a>
         </div>    
     </div>
     

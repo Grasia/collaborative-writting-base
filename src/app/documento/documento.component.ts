@@ -18,7 +18,8 @@ export class DocumentoComponent implements OnInit{
     @Input() doc: Doc;
     error: string;
     editar: boolean;
-    
+    id:number;
+    x:number;
     constructor(private route: ActivatedRoute,
                private docService: DocService,
                  private userService: UserService,
@@ -41,33 +42,69 @@ export class DocumentoComponent implements OnInit{
 
     ngOnInit(){
         
-        this.doc = this.docService.getDoc(+this.route.snapshot.paramMap.get('id'));
+        this.route.queryParams
+        .subscribe(params => {
+            this.id = params.id;
+            this.x = params.x;
+        });
+
+        this.doc = this.docService.getDoc(this.id);
+    
+        //this.doc = this.docService.getDoc(+this.route.snapshot.paramMap.get('id'));
         this.docService.activarDoc(this.doc);
-        this.editar = false;
+        //this.editar = false;
        /* const documento = +this.route.snapshot.paramMap.get('id');
         this.docService.getDoc(documento)
             .subscribe(doc => this.doc = doc);
         */
     }
-    
-    edit(){
+
+
+
+
+    edit():void{
 
         this.editar = true;
 
     }
 
-    noEdit(){
+    noEdit():void{
 
         this.editar = false;
 
     }
 
-    isEditar(){
+    isEditar():boolean{
+
+        if(this.editar == false && this.isAdmin() == true) return false;
+        else return true;
+
+    }
+
+    isEdit():boolean{
 
         return this.editar;
 
     }
 
+    isFin():boolean{
+
+        if(this.docService.getFase() == 'cambios') return true;
+        else return false;
+
+    }
+
+    siguiente():void{
+
+        this.docService.next();
+
+    }
+
+    fin():void{
+
+        this.docService.last();
+
+    }
 
     getRefs(){
         
@@ -85,7 +122,7 @@ export class DocumentoComponent implements OnInit{
     }
     
     verDoc(){
-        
+        //window.open('/analisis', '_blank');
         if(this.doc.etapa == 'analisis') this.router.navigate(['/'+this.doc.etapa], {replaceUrl: true});
             else if(this.doc.etapa == 'llamada') this.router.navigate(['/'+ this.doc.etapa], {replaceUrl: true});
                 else this.router.navigate(['/texto'], { replaceUrl: true });

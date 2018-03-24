@@ -16,16 +16,16 @@
 
     <div class = "bot">
 
-        <mat-tab-group>
+        <mat-tab-group selectedIndex = {{x}}>
             <mat-tab class="cosa" label="Información">
                 
-                <div class="izq" *ngIf = "!isEditar()">
+                <div class="izq" *ngIf = "!isEdit()">
                     
                     Nombre: {{getNombre()}}<br><br> 
                     Descripcion: {{getDes()}}<br><br>
                     Referencias: {{getRefs()}}<br><br>
                 </div>
-                <div class = "izq" *ngIf = "isEditar()">
+                <div class = "izq" *ngIf = "isEdit()">
                     
                     <form class="example-form">
                         <mat-form-field class="example-full-width">
@@ -49,13 +49,17 @@
                 </div>
                 <div class="der">
                     <button (click)="edit()" *ngIf="!isEditar()" class='boton' mat-raised-button>Editar</button>
-                    <button (click)="noEdit()" *ngIf="isEditar()" class='boton' mat-raised-button>Cancelar</button>
+                    <button (click)="noEdit()" *ngIf="isEdit()" class='boton' mat-raised-button>Cancelar</button>
                 </div>
             </mat-tab>
             <mat-tab label="Fases">
                 <br><br>
                 <div>
-                    Fechas especificadas para las diferentes fases del documento.
+                    Fechas especificadas para las diferentes fases del documento.<br>
+                    <div *ngIf = 'isAdmin()'>
+                        <button (click)="siguiente()" class='boton' mat-raised-button>Siguiente fase</button><br><br>
+                        <button (click)="fin()" *ngIf = 'isFin()' class='boton' mat-raised-button>Finalizar</button> 
+                    </div>
                 </div>
             </mat-tab>
             <mat-tab label="Analisis">

@@ -21,10 +21,18 @@ export class LlamadaComponent implements OnInit {
         
     }
     
-    documentos():void{
-        
+    
+    getFase():string{
 
-        this.router.navigate(['/participar'], { replaceUrl: true });
+        return this.docService.getFase();
+
+
+    }
+
+
+    documentos():void{
+        this.router.navigate(['/documento'], { queryParams: { id: this.getId(), x:'0' } });
+        //this.router.navigate(['/documento/'+ this.docService.getId()], { replaceUrl: true });
         
     }
     
@@ -33,5 +41,13 @@ export class LlamadaComponent implements OnInit {
         return this.userService.isAdmin();
         
     }
+
+    
+    getId():number{
+
+        return this.docService.getId();
+
+    }
+
     
 }

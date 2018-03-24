@@ -17,13 +17,14 @@ export class RedaccionComponent implements OnInit {
     
     siguiente():void{
         
+
         this.router.navigate([this.docService.next()], { replaceUrl: true });
         
     }
     
     documentos():void{
         
-        this.router.navigate(['/participar'], { replaceUrl: true });
+        this.router.navigate(['/documento/'+ this.docService.getId()], { replaceUrl: true });
         
     }
     

@@ -12,7 +12,7 @@ export class DocService {
         
     { id: 3, nombre: 'Documento 3', creador: 'carlos', participante: 'carlos', texto: 'Cohn trató por todos los medios frenar la conflagración. Al igual que con el Tratado de Libre Comercio de América del Norte (TLCAN), buscó que primase la negociación. Pero en esta ocasión falló. Ni siquiera su triunfo con la titánica reforma fiscal, el mayor éxito político hasta la fecha de la Casa Blanca, le valió para hacer valer su palabra. Trump, jaleado por Navarro y los epígonos de Steve Bannon que aún quedan en la Casa Blanca, volvió a sus raíces, alzó la bandera del América Primero y anunció que las guerras comerciales son “buenas y fáciles de ganar”.', etapa: 'cambios', descripcion: 'Descipcion del documento 3', referencias: 'La grandiosa Wikipedia'},
         
-    { id: 4, nombre: 'Documento 4', creador: 'jorge', participante: 'jorge', texto: 'El golpe fue excesivo para el financiero de Wall Street. Su teórico subordinado, Peter Navarro, le había ganado la partida y había impuesto la línea dura en un tema altamente volátil y que marcará la estrategia económica el mandato. Estados Unidos, en contra de su criterio, se enfrentaba a cara de perro con sus socios y vecinos. Europa, Canadá, México iban a sufrir los embates. Y el siguiente en la lista era China. El gigante asiático, que hasta ahora se ha mantenido a salvo de las iras de Trump por su apoyo en el cerco a Corea Norte, entraba en rumbo de colisión.', etapa: 'analisis', descripcion: 'Descipcion del documento 4', referencias: 'La grandiosa Wikipedia' }
+    { id: 4, nombre: 'Documento 4', creador: 'jorge', participante: 'jorge', texto: 'El golpe fue excesivo para el financiero de Wall Street. Su teórico subordinado, Peter Navarro, le había ganado la partida y había impuesto la línea dura en un tema altamente volátil y que marcará la estrategia económica el mandato. Estados Unidos, en contra de su criterio, se enfrentaba a cara de perro con sus socios y vecinos. Europa, Canadá, México iban a sufrir los embates. Y el siguiente en la lista era China. El gigante asiático, que hasta ahora se ha mantenido a salvo de las iras de Trump por su apoyo en el cerco a Corea Norte, entraba en rumbo de colisión.', etapa: 'revision', descripcion: 'Descipcion del documento 4', referencias: 'La grandiosa Wikipedia' }
         
     ];
     
@@ -32,7 +32,13 @@ export class DocService {
         
     }
 
-    next(){
+    getId(): number{
+
+        return this.activo.id;
+
+    }
+
+    next():string{
 
         if(this.activo.etapa == "redaccion"){
              this.activo.etapa = 'llamada';

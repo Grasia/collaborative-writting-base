@@ -16,7 +16,7 @@ const routes: Routes = [
     { path: 'inicio', component: InicioComponent },
     { path: 'login', component: LoginComponent},
     { path: 'participar', component: ParticiparComponent},
-    { path: 'documento/:id', component: DocumentoComponent},
+    { path: 'documento', component: DocumentoComponent},
     { path: 'nuevo', component: NuevoComponent},
     { path: 'texto', component: RevisionComponent},
     { path: 'analisis', component: AnalisisComponent},

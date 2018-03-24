@@ -40,7 +40,7 @@ export class NuevoComponent implements OnInit{
         }else{
             
             this.docService.add(titulo, "jorge");
-            this.router.navigate(['/documento/'+this.docService.activo.id], { replaceUrl: true });
+            this.router.navigate(['/documento'], { queryParams: { id: this.getId() , x:'0' } });
             //this.location.go('/documento/'+this.docService.activo.id, '');
             
             
