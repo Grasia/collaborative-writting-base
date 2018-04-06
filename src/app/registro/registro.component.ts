@@ -6,28 +6,22 @@ import { SwellService } from '../swell.service';
   styleUrls: ['registro.component.css'],
   templateUrl: 'registro.component.html',
 })
-export class RegistroComponent{
-   
-    private service:any;
-    private error: boolean;
+export class RegistroComponent {
 
-    constructor(private swellService: SwellService){}
 
-    ngOnInit(){
-        
-        this.swellService.getInstancePromise();
-        this.service = this.swellService.getService();
-        this.error = false;
-        
+    constructor(private service: SwellService) {
+
     }
-    
-    crear(usuario, nombre, contraseña){
 
-        this.service.createUser({
+    crear(usuario, nombre, contrasena) {
+
+        this.service.get().createUser({
             id: usuario,
             name: nombre,
-            password: contraseña
+            password: contrasena
         })
+        .then( user => { } )
+        .catch( error => { } );
 
     }
 

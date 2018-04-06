@@ -7,39 +7,30 @@ declare let window: any;
 @Injectable()
 export class SwellService {
 
-private instance: any = null;
-private service:any;
+private service: any;
 
-public getService():any{
-
-    //this.service = swell.runtime.get();
-    return window.service;
-
+public get(): any {
+    return this.service;
 }
 
-public getInstancePromise() {
+public promise() {
 
     return new Promise((resolve, reject) => {
-                if (this.instance != null) {
-                    resolve(this.instance);
-                    }
-                    swell.onReady((serviceInstance) => {
-                    this.instance = serviceInstance;
-                    //this.service = swell.runtime.get();
-                    resolve(serviceInstance);
-                    });
-                    setTimeout(() => {
-                    reject(new Error('Error loading swellrt client: timeout'));
-                    }, 15000);
+
+                if (this.service != null) {
+                    resolve(this.service);
+                    return;
+                }
+
+                swell.onReady((_service) => {
+                    this.service = _service;
+                    window.service = this.service;
+                    resolve(this.service);
+                });
+
+                setTimeout(() => { reject(new Error('Error loading swellrt client: timeout'));
+                }, 15000);
             });
     }
 
-    /*swell.onReady( (service) => {
-
-        window.service = service;
-
-    });*/
-
-
-
-} 
+}
