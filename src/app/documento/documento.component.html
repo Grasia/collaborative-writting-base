@@ -47,8 +47,8 @@
 
 
                 </div>
-                <div class="der">
-                    <button (click)="edit()" *ngIf="!isEditar()" class='boton' mat-raised-button>Editar</button>
+                <div class="der" *ngIf = 'isAdmin()'>
+                    <button (click)="edit()" *ngIf="!isEdit()" class='boton' mat-raised-button>Editar</button>
                     <button (click)="noEdit()" *ngIf="isEdit()" class='boton' mat-raised-button>Cancelar</button>
                 </div>
             </mat-tab>

@@ -70,14 +70,15 @@ export class DocumentoComponent implements OnInit{
 
     noEdit():void{
 
+
         this.editar = false;
 
     }
 
     isEditar():boolean{
 
-        if(this.editar == false && this.isAdmin() == true) return false;
-        else return true;
+        if(this.editar == false && this.isAdmin() == true) return true;
+        else return false;
 
     }
 

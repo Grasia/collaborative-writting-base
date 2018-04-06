@@ -12,11 +12,13 @@ import { LoginComponent } from './login/login.component';
 import { ParticiparComponent } from './participar/participar.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { LoginInputComponent} from './login-input/login-input.component';
+import { RegistroComponent} from './registro/registro.component';
 import { UserService } from './user.service';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { AdminComponent } from './admin/admin.component';
 import { ToggleComponent } from './toggle/toggle.component';
 import { DocService } from './doc.service';
+import { SwellService } from './swell.service';
 import { DocumentoComponent } from './documento/documento.component';
 import { RevisionComponent } from './revision/revision.component';
 import { RedaccionComponent } from './redaccion/redaccion.component';
@@ -117,6 +119,7 @@ export class MaterialModule {}
     LoginComponent,
     ParticiparComponent,
     LoginInputComponent,
+    RegistroComponent,
     UsuarioComponent,
     AdminComponent,
     ToggleComponent,
@@ -141,7 +144,7 @@ export class MaterialModule {}
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserService, DocService],
+  providers: [UserService, DocService, SwellService],
   bootstrap: [AppComponent],
 
 })

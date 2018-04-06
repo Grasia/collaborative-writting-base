@@ -1,0 +1,17 @@
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Usuario" #usuario>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="Nombre" #nombre>
+      </mat-form-field>  
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Contraseña" type=password #contrasena>
+    </mat-form-field>
+      <br>
+    <button (click)="crear(usuario.value, nombre.value ,contrasena.value)" class='boton' mat-raised-button>Crear</button>
+      
+      <div *ngIf="error">Error al crear usuario</div>
+  
+  </form>
+  

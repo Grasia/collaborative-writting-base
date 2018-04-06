@@ -6,7 +6,7 @@
     
 
 <div class = 'formulario'>
-    
+    <app-registro></app-registro>
     <app-login-input *ngIf="!isLog()"></app-login-input>
     <button class='boton' *ngIf="isLog()" (click)="logout()" mat-raised-button>Logout</button>
 

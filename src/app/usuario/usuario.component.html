@@ -3,7 +3,7 @@
 
     <h2>Documentos</h2>
     
-    <a routerLink = "/documento/{{doc.id}}" *ngFor='let doc of docService.documentos'>
+    <a class = "doc" [routerLink] = "['/documento']" [queryParams] = "{id: doc.id , x:'0'}" queryParamsHandling="merge" *ngFor='let doc of docService.documentos'>
         <div class="documento" *ngIf="comprueba(doc)">
             <h4>{{doc.nombre}}</h4>
         </div>
