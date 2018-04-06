@@ -12,8 +12,9 @@ private service:any;
 
 public getService():any{
 
-    this.service = swell.runtime.get();
-    return this.service;
+    //this.service = swell.runtime.get();
+    return window.service;
+
 }
 
 public getInstancePromise() {
@@ -32,6 +33,12 @@ public getInstancePromise() {
                     }, 15000);
             });
     }
+
+    /*swell.onReady( (service) => {
+
+        window.service = service;
+
+    });*/
 
 
 

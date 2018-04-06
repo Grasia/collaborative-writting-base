@@ -18,7 +18,7 @@ export class RegistroComponent{
         this.swellService.getInstancePromise();
         this.service = this.swellService.getService();
         this.error = false;
-
+        
     }
     
     crear(usuario, nombre, contraseña){
