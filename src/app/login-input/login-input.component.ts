@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { UserService } from '../user.service';
-
+import { SwellService } from '../swell.service'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-input',
   styleUrls: ['login-input.component.css'],
@@ -11,7 +12,7 @@ export class LoginInputComponent{
     private log:boolean;
     private error:boolean;
     
-    constructor(private userService: UserService){}
+    constructor(private userService: UserService, private service: SwellService, private router: Router){}
     
     ngOnInit(){
     
@@ -21,7 +22,8 @@ export class LoginInputComponent{
     }
     
     login(user, pass) : void{
-            this.error=false;
+
+        /*    this.error=false;
         if(user == "jorge" && pass == "jorge"){
         
             this.log = true;
@@ -37,7 +39,19 @@ export class LoginInputComponent{
             this.log=false;
             this.error=true;
         
-        }
+        }*/
+
+        this.service.get().login({
+            id : user + "@local.net",
+            password : pass
+          })
+          .then( profile => {   console.log("Login correcto"); 
+                                this.log = true; 
+                                this.error = false; 
+                                this.userService.add(user, "admin");
+                                this.router.navigate(['/participar'], {replaceUrl: true});})
+
+          .catch( error => {console.log("Error en el login"); this.error = true;});
     
     }
     
@@ -47,7 +61,11 @@ export class LoginInputComponent{
         this.userService.logout();
     }
     
+    isLog(){
 
+        return this.userService.isLog();
+
+    }
     
 
 }

@@ -1,17 +1,24 @@
 <form class="example-form">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Usuario" #usuario>
+      <input matInput placeholder="Usuario" #user>
     </mat-form-field>
     <mat-form-field class="example-full-width">
-        <input matInput placeholder="Nombre" #nombre>
-      </mat-form-field>  
+      <input matInput placeholder="Nombre" #realName>
+    </mat-form-field>  
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Contraseña" type=password #contrasena>
+      <input matInput placeholder="Contraseña" type=password #pass>
     </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Correo" [formControl]="emailFormControl"
+      [errorStateMatcher]="matcher" #mail>
+      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+        Correo no valido.
+      </mat-error>  
+    </mat-form-field>    
       <br>
-    <button (click)="crear(usuario.value, nombre.value ,contrasena.value)" class='boton' mat-raised-button>Crear</button>
+    <button (click)="crear(user.value, realName.value ,pass.value, mail.value)" class='boton' mat-raised-button>Crear</button>
       
-      <div *ngIf="error">Error al crear usuario</div>
+      <div *ngIf="error">{{error}}</div>
   
   </form>
   

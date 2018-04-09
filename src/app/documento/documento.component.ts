@@ -110,15 +110,13 @@ export class DocumentoComponent implements OnInit{
     getRefs(){
         
         return this.doc.referencias;
-        
-        
+           
     }
     
     
     getDes(){
         
         return this.doc.descripcion;
-        
         
     }
     
@@ -131,8 +129,7 @@ export class DocumentoComponent implements OnInit{
     }
     
     isLog(){
-        
-        
+           
         return this.userService.isLog();
         
     }

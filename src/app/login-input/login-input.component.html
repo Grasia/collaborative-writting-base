@@ -8,8 +8,8 @@
     <input matInput placeholder="Contraseña" type=password #contrasena>
   </mat-form-field>
     <br>
-  <button (click)="login(usuario.value, contrasena.value)" class='boton' mat-raised-button>Login</button>
-    
+  <button (click)="login(usuario.value, contrasena.value)" class='boton' mat-raised-button>Login</button><br><br>
+    <a *ngIf = "!isLog()" class = 'link' routerLink = "/registro">Aun no tienes una cuenta???</a>
     <div *ngIf="error">Error con usuario o contraseña</div>
 
 </form>

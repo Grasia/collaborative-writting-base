@@ -9,6 +9,7 @@ import { NuevoComponent } from './nuevo/nuevo.component';
 import { RevisionComponent} from './revision/revision.component';
 import { LlamadaComponent} from './llamada/llamada.component';
 import { AnalisisComponent} from './analisis/analisis.component';
+import { RegistroComponent } from './registro/registro.component';
 
 const routes: Routes = [
     
@@ -20,7 +21,8 @@ const routes: Routes = [
     { path: 'nuevo', component: NuevoComponent},
     { path: 'texto', component: RevisionComponent},
     { path: 'analisis', component: AnalisisComponent},
-    { path: 'llamada', component: LlamadaComponent}
+    { path: 'llamada', component: LlamadaComponent},
+    { path: 'registro', component: RegistroComponent}
 ];
 
 @NgModule({

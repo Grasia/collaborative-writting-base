@@ -13,6 +13,29 @@ public get(): any {
     return this.service;
 }
 
+/*public crear(){
+
+    this.service.createUser({
+        id: 'jorge',
+        name: 'Jorge',
+        password: 'jorge'
+    })
+    .then( user => {console.log(user) } )
+    .catch( error => { console.log(error) } );
+
+}*/
+
+public login(){
+
+    this.service.login({
+        id : swell.Constants.ANONYMOUS_USER_ID + "@local.net",
+        password : ''
+      })
+      .then( profile => {})
+      .catch(error=>{});
+
+}
+
 public promise() {
 
     return new Promise((resolve, reject) => {
