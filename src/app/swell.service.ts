@@ -8,6 +8,7 @@ declare let window: any;
 export class SwellService {
 
 private service: any;
+private object : any = "";
 
 public get(): any {
     return this.service;
@@ -24,6 +25,25 @@ public get(): any {
     .catch( error => { console.log(error) } );
 
 }*/
+
+public getSwell(){
+
+    return swell;
+
+}
+
+public setObject(obj){
+
+    this.object = obj;
+
+}
+
+
+public getObject(){
+
+    return this.object;
+
+}
 
 public login(){
 

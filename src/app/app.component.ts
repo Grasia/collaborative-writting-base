@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
       this.swellService.promise()
-      .then( service => { console.log('SwellRT is READY!'); this.swellService.login(); })
+      .then( service => { console.log('SwellRT is READY!');})
       .catch( error => { console.log('ERROR loading SwellRT!'); });
 
       

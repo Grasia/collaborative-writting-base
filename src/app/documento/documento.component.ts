@@ -4,6 +4,7 @@ import { Doc } from '../doc';
 import { DocService } from '../doc.service';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { SwellService } from '../swell.service';
 
 @Component({
   selector: 'app-documento',
@@ -20,10 +21,12 @@ export class DocumentoComponent implements OnInit{
     editar: boolean;
     id:number;
     x:number;
+    object:any;
     constructor(private route: ActivatedRoute,
                private docService: DocService,
                  private userService: UserService,
-                 private router:Router
+                 private router:Router,
+                 private service: SwellService
                ){};
     
     
@@ -49,7 +52,15 @@ export class DocumentoComponent implements OnInit{
         });
 
         this.doc = this.docService.getDoc(this.id);
-    
+        
+        this.service.get().open({
+
+            id: "local.net/Axt6M" + this.id
+
+        })
+        .then(object => {console.log("Exitoo, creado o abierto el doc"); object.addParticipant(this.userService.getName() + "@local.net"); this.service.setObject(object);})
+        .catch(error => {console.log(error)});
+
         //this.doc = this.docService.getDoc(+this.route.snapshot.paramMap.get('id'));
         this.docService.activarDoc(this.doc);
         //this.editar = false;
@@ -60,7 +71,11 @@ export class DocumentoComponent implements OnInit{
     }
 
 
+    getObject(){
 
+        return this.object;
+
+    }
 
     edit():void{
 
@@ -112,7 +127,6 @@ export class DocumentoComponent implements OnInit{
         return this.doc.referencias;
            
     }
-    
     
     getDes(){
         
@@ -185,6 +199,13 @@ export class DocumentoComponent implements OnInit{
     documentos(){
         
         this.router.navigate(['/participar'], { replaceUrl: true });
+        this.service.get().close({
+
+            id: "local.net/Axt6M" + this.id
+
+        })
+        .then(profile => {console.log("cerrado correctamente"); this.service.setObject("")})
+        .catch(error => {console.log(error)});
         
     }
   
