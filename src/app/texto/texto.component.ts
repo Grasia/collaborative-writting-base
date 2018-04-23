@@ -58,8 +58,8 @@ export class TextoComponent implements OnInit, OnDestroy {
 
 
     // Todo esto va ahora en una funcion a parte, ya que es añadir un comentario
-    const idComentario = this.anotacion.value;
-    this.object.node('comments').node(idComentario).node('posts').add({
+    // this.anotacion.value es donde está el id del comentario
+    this.object.node('comments').node(this.anotacion.value).node('posts').add({
       participant: 'usuario?',
       datetime: (new Date()).getTime(),
       vote: 'positive',
