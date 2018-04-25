@@ -8,10 +8,23 @@ declare let window: any;
 export class SwellService {
 
 private service: any;
-private object : any = "";
+private object: any = "";
+private anotacion: any;
 
 public get(): any {
     return this.service;
+}
+
+public setAnotacion(anot){
+
+    this.anotacion = anot;
+
+}
+
+public getAnotacion(){
+
+    return this.anotacion;
+
 }
 
 /*public crear(){

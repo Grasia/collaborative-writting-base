@@ -11,12 +11,15 @@
     </div>
     <div class = 'margenDr'>Margen derecho<br>
     
-        <app-opinar *ngIf="mostrar()"></app-opinar>
+        <app-opinar *ngIf="isOpinar()"></app-opinar>
         <div class="fase" *ngIf = "isAdmin()">
             Fase:<a class = "doc" [routerLink] = "['/documento']" [queryParams] = "{id: getId() , x:'1'}">
                     {{getFase()}}
             </a>
-        </div>    
+        </div>
+
+        
+
     </div>
     
 </div>

@@ -9,11 +9,16 @@ import { UserService } from '../user.service';
 })
 export class RevisionComponent implements OnInit {
 
+    opinion:boolean;
+
     constructor(private docService:DocService,
                 private router:Router,
                 private userService:UserService) { }
 
     ngOnInit() {
+
+        this.opinion = false;
+
     }
     
     isAdmin():boolean{
@@ -31,6 +36,23 @@ export class RevisionComponent implements OnInit {
         
     }
     
+    opinar():void{
+
+        this.opinion = true;
+
+    }
+
+    noOpinar():void{
+
+        this.opinion = false;
+
+    }
+
+    isOpinar():boolean{
+
+        return this.opinion;
+
+    }
 
     isCambios():boolean{
 
