@@ -67,16 +67,20 @@ export class TextoComponent implements OnInit, OnDestroy {
 
     console.log('Configurado nodo para comentario ' + idComentario);
     console.log(comentarioMap.get());
+    console.log(object.node('comments').node(idComentario));
+    console.log(object.node('comments').node(idComentario).node('posts'));
   }
 
   selectionHandler(range, editor, selection) {
 
+    this.service.setRange(range);
     console.log('Seleccion capturada en rango ' + range);
     // recoge anotaciones en ese rango si las tiene;
     const anotComentarios = this.editor.getAnnotations('comment').comment;
 
     // si hay anotacion y dentro de la anotacion hay comentarios concretos.
     const tieneComentarios = anotComentarios && Array.isArray(anotComentarios) && anotComentarios.length > 0;
+    this.service.setComentarios(tieneComentarios);
 
     console.log('Comentarios en la seleccion? ' + tieneComentarios);
     console.log(anotComentarios);
@@ -86,31 +90,6 @@ export class TextoComponent implements OnInit, OnDestroy {
       console.log('seleccion de caca');
       this.general.noOpinar();
       return;
-    }
-
-
-    if (!tieneComentarios) {
-      // OJO, user siempre mismo clave 'comment'
-      // para convertir a string, sobra con concatenar con '',
-      // aunque he añadido un prefijo 'c' para mejorar comprension
-      this.idComentario = 'c' + parseInt('' + (Math.random() * 10000), 10);
-
-      // otro posible id podría ser el timestamp
-      // const idComentario = 'c' + (new Date()).getTime();
-
-      // la anotacion nos devuelve el setAnnotation()
-      this.anotacion = this.editor.setAnnotation('comment', this.idComentario);
-
-      this.configuraNodoComentarios(this.object);
-
-      this.configuraNodoDeComentario(this.object, this.idComentario);
-
-
-    } else {
-      this.anotacion = anotComentarios[0];
-      // (pablo) estas duplicando la anotacion, es eso lo que quieres hacer aqui ¿?
-      // this.service.setAnotacion(this.anotacion.value);
-      console.log('Ya existe comentario en la seleccion ' + this.anotacion.value);
     }
 
     console.log('llamando a opinar');
@@ -136,7 +115,7 @@ export class TextoComponent implements OnInit, OnDestroy {
 
     if (!this.editor) {
       this.editor = this.service.getSwell().Editor.create(document.getElementById('editor'));
-
+      this.service.setEditor(this.editor);
       // establecer el selection hanlder sólo una vez,
       // despues de crear el editor.
       // para simplificar el codigo fuente, llevar el codigo
@@ -144,9 +123,9 @@ export class TextoComponent implements OnInit, OnDestroy {
 
       this.editor.setSelectionHandler((range, editor, selection) => {
 
-        // this.editor.clearAnnotation('comment');
-        // this.object.delete('comments');
-        this.selectionHandler(range, editor, selection);
+         //this.editor.clearAnnotation('comment');
+         //this.object.delete('comments');
+         this.selectionHandler(range, editor, selection);
 
       });
 

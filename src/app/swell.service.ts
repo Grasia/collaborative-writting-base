@@ -10,6 +10,51 @@ export class SwellService {
 private service: any;
 private object: any = "";
 private anotacion: any;
+private comentarios: boolean;
+private editor:any;
+private range:any;
+private selection:any;
+
+public setEditor(ed):void{
+
+    this.editor = ed;
+
+}
+public setRange(r):void{
+
+    this.range  = r;
+
+}
+
+public getRange():any{
+
+    return this.range;
+
+}
+
+public setSelection(s):void{
+
+    this.selection = s;
+
+}
+
+public getEditor():any{
+
+    return this.editor;
+
+}
+
+public tieneComentarios():boolean{
+
+    return this.comentarios;
+
+}
+
+public setComentarios(com):void{
+
+    this.comentarios = com;
+
+}
 
 public get(): any {
     return this.service;
