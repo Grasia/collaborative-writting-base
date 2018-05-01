@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DocService } from '../doc.service';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { Coment } from '../coment'
 @Component({
   selector: 'app-revision',
   templateUrl: './revision.component.html',
@@ -10,6 +11,8 @@ import { UserService } from '../user.service';
 export class RevisionComponent implements OnInit {
 
     opinion:boolean;
+    comentarios: string;
+    coments: Coment[];
 
     constructor(private docService:DocService,
                 private router:Router,
@@ -18,6 +21,30 @@ export class RevisionComponent implements OnInit {
     ngOnInit() {
 
         this.opinion = false;
+        this.coments = [];
+    }
+
+    vaciarComentarios(){
+
+        this.coments = [];
+
+    }
+
+    isComent(){
+
+        
+        if(this.coments[0]) return true;
+        return false;
+
+    }
+
+    llenarComentarios(com){
+        
+        for(var i = 0; i < com.length; i++){
+            
+            this.coments[this.coments.length] = { text: com[i].text, name: com[i].participant};
+                     
+        }
 
     }
     

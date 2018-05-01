@@ -72,7 +72,7 @@ export class TextoComponent implements OnInit, OnDestroy {
   }
 
   selectionHandler(range, editor, selection) {
-
+    this.general.vaciarComentarios();
     this.service.setRange(range);
     console.log('Seleccion capturada en rango ' + range);
     // recoge anotaciones en ese rango si las tiene;
@@ -81,6 +81,20 @@ export class TextoComponent implements OnInit, OnDestroy {
     // si hay anotacion y dentro de la anotacion hay comentarios concretos.
     const tieneComentarios = anotComentarios && Array.isArray(anotComentarios) && anotComentarios.length > 0;
     this.service.setComentarios(tieneComentarios);
+
+
+
+    if(tieneComentarios){
+      console.log(anotComentarios[0].value);
+      console.log(this.service.getObject().node('comments').node(anotComentarios[0].value).get('posts'));
+      for(var i = 0; i < anotComentarios.length; i++){
+        
+        this.general.llenarComentarios(this.service.getObject().node('comments').node(anotComentarios[i].value).get('posts'));
+        
+      }
+      
+    }
+
 
     console.log('Comentarios en la seleccion? ' + tieneComentarios);
     console.log(anotComentarios);
@@ -92,10 +106,20 @@ export class TextoComponent implements OnInit, OnDestroy {
       return;
     }
 
-    console.log('llamando a opinar');
+    
     this.service.setObject(this.object);
-    this.general.opinar();
 
+    if(tieneComentarios){
+      console.log("primer if");
+      
+      if(this.isComment(this.service.getObject().node('comments').node(anotComentarios[0].value).get('posts'))){
+
+        console.log('llamando a opinar');
+        this.general.opinar();
+        
+      }else console.log('no opinas, porque ya has opinao mamon');
+
+    }else this.general.opinar();
 
     // Todo esto va ahora en una funcion a parte, ya que es añadir un comentario
     // this.anotacion.value es donde está el id del comentario
@@ -104,6 +128,25 @@ export class TextoComponent implements OnInit, OnDestroy {
   }
 
 
+  isComment(comments){
+
+    console.log(comments);
+    console.log(comments[0].participant);
+    console.log(this.user.getName());
+
+    for(var i = 0; i < comments.length; i++){
+
+      if(comments[i].participant == this.user.getName() + "@local.com"){
+
+        return true;
+
+      }
+
+    }
+    return false;
+
+  }
+
   ngOnInit() {
 
     this.object = this.service.getObject();
@@ -111,7 +154,11 @@ export class TextoComponent implements OnInit, OnDestroy {
     this.service.getSwell().Editor.configure({});
 
     // define() requiere tres parametros
-    this.service.getSwell().Editor.AnnotationRegistry.define('comment', 'cc', {});
+    this.service.getSwell().Editor.AnnotationRegistry.define('comment', 'cc', {
+
+     
+
+    });
 
     if (!this.editor) {
       this.editor = this.service.getSwell().Editor.create(document.getElementById('editor'));
@@ -123,8 +170,8 @@ export class TextoComponent implements OnInit, OnDestroy {
 
       this.editor.setSelectionHandler((range, editor, selection) => {
 
-         //this.editor.clearAnnotation('comment');
-         //this.object.delete('comments');
+        // this.editor.clearAnnotation('comment');
+        // this.object.delete('comments');
          this.selectionHandler(range, editor, selection);
 
       });

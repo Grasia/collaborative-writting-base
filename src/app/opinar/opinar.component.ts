@@ -13,16 +13,19 @@ export class OpinarComponent implements OnInit {
   send:string;
   anotacion:any;
   idCom:any;
+  comentarios:string;
+
   constructor(private swell:SwellService, private user: UserService) { }
 
   ngOnInit() {
 
     this.send = "";
+    this.comentarios = "";
   }
 
 
   comentar(voto, opinion):void{
-
+    
     console.log(voto);
     console.log(opinion);
     console.log(this.swell.getAnotacion());
@@ -49,6 +52,8 @@ export class OpinarComponent implements OnInit {
 
 
     } else {
+
+
         console.log("else");
         //Aqui habra que comprobar si ese usuario ya ha hecho un comentario en esa anotacion.
         this.anotacion = this.swell.getEditor().getAnnotations('comment', this.swell.getRange()).comment[0];
@@ -61,25 +66,30 @@ export class OpinarComponent implements OnInit {
 
     console.log(nombre);
     console.log(this.anotacion.value);
-
+    
+    
   
+    
+      this.swell.getObject()
+      .node('comments')
+      .node(this.anotacion.value)
+      .push('posts', 
+      {
+        participant: nombre,
+        datetime: (new Date()).getTime(),
+        vote: voto,
+        text: opinion
+      });
 
-    this.swell.getObject()
-    .node('comments')
-    .node(this.anotacion.value)
-    .push('posts', 
-    {
-      participant: nombre,
-      datetime: (new Date()).getTime(),
-      vote: voto,
-      text: opinion
-    });
+
+      console.log("comentario añadido");
+      console.log(this.swell.getObject().node('comments').node(this.swell.getAnotacion().value).get('posts'));
 
 
-    console.log("comentario añadido");
-    console.log(this.swell.getObject().node('comments').node(this.swell.getAnotacion().value).get('posts'));
-
+    
   }
+
+
 
   configuraNodoComentarios(object: any) {
 
