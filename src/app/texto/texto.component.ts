@@ -7,7 +7,6 @@ import { UserService } from '../user.service';
 
 declare let window: any; // para depuracion sucia en consola
 declare let document: any;
-declare let swell: any;
 
 @Component({
   selector: 'app-texto',

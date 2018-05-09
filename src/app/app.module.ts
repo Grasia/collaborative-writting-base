@@ -30,6 +30,7 @@ import { NuevoComponent } from './nuevo/nuevo.component';
 import { TextoComponent } from './texto/texto.component';
 import { OpinarComponent } from './opinar/opinar.component';
 import { RedactarComponent } from './redactar/redactar.component';
+import { TextoAnalisisComponent } from './texto-analisis/texto-analisis.component';
 
 
 import {
@@ -133,7 +134,8 @@ export class MaterialModule {}
     NuevoComponent,
     TextoComponent,
     OpinarComponent,
-    RedactarComponent
+    RedactarComponent,
+    TextoAnalisisComponent
       
   ],
   imports: [
