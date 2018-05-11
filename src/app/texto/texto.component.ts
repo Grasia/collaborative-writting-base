@@ -75,6 +75,8 @@ export class TextoComponent implements OnInit, OnDestroy {
     this.service.setRange(range);
     console.log('Seleccion capturada en rango ' + range);
     // recoge anotaciones en ese rango si las tiene;
+    console.log(this.service.getSwell().Range.ALL);
+    console.log("anotaciones: " + this.editor.getAnnotations('comment', this.service.getSwell().Range.ALL))
     const anotComentarios = this.editor.getAnnotations('comment').comment;
 
     // si hay anotacion y dentro de la anotacion hay comentarios concretos.
@@ -153,7 +155,7 @@ export class TextoComponent implements OnInit, OnDestroy {
     this.service.getSwell().Editor.configure({});
 
     // define() requiere tres parametros
-    this.service.getSwell().Editor.AnnotationRegistry.define('comment', 'cc', {
+    this.service.getSwell().Editor.AnnotationRegistry.define('comment', 'com', {
 
      
 
@@ -169,9 +171,9 @@ export class TextoComponent implements OnInit, OnDestroy {
 
       this.editor.setSelectionHandler((range, editor, selection) => {
 
-        // this.editor.clearAnnotation('comment');
-        // this.object.delete('comments');
-         this.selectionHandler(range, editor, selection);
+         this.editor.clearAnnotation('comment');
+         this.object.delete('comments');
+         //this.selectionHandler(range, editor, selection);
 
       });
 

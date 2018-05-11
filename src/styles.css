@@ -70,5 +70,21 @@ body {
   color: #039be5;
 }
 
+.comment{
 
+  background-color: rgba(229, 232, 42, 0.7);
+  
+
+}
+
+.positive{
+
+  background-color: blue;
+
+}
+.negative{
+
+  background-color: red;
+
+}
 /* You can add global styles to this file, and also import other style files */

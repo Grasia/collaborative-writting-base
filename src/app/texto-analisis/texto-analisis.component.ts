@@ -12,6 +12,7 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
   private object: any;
   private text: any;
   private editor: any;
+  private totalComentarios: number;
 
   constructor(private service: SwellService) { }
 
@@ -23,10 +24,65 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
 
 
   mapaCalor(){
-
+    var anotaciones =  this.editor.getAnnotations('comment', this.service.getSwell().Range.ALL).comment;
     var range = this.service.getSwell().Range.ALL;
+    var comentarios: any;
+    this.totalComentarios = 0;
     console.log(range);
-    console.log(this.editor.getAnnotations('comment', range).comment);
+    console.log(anotaciones);
+
+    this.service.getSwell().Editor.AnnotationRegistry.define('negative', 'neg', {});
+    aux = this.service.getEditor().setAnnotation('negative', 'c105050' , range);
+    console.log("anotacion "+ aux);
+
+    if(anotaciones){
+      for(var i = 0; i < anotaciones.length; i++){
+        this.editor.clearAnnotation('negative');
+        this.editor.clearAnnotation('positive');
+        var voto = 0;
+        var aux;
+        comentarios = this.service.getObject().node('comments').node(anotaciones[i].value).get('posts');
+        console.log("-----anotacion " + i);
+        for(var j = 0; j < comentarios.length; j++){
+          console.log("--comentario " + j);
+          if(comentarios[j].vote == 'positive'){
+
+            console.log("positivo ++");
+            voto++;
+
+          }else if(comentarios[j].vote == 'negative'){
+
+            console.log("negative ++");
+            voto--;
+
+          }
+          this.totalComentarios++;
+        }
+
+        var anotRange = {
+
+          start: anotaciones[i].range.start,
+          end: anotaciones[i].range.end
+
+        };
+
+        console.log(anotRange);
+
+        if(voto > 0){
+          console.log("positivo " + anotaciones[i].value + " " + anotRange);
+          aux = this.service.getEditor().setAnnotation('positive', 'c500', range);
+          console.log("anotacion: " + aux);
+        }else{
+          console.log("negativo " + anotaciones[i].value + " " + anotRange);
+          aux = this.service.getEditor().setAnnotation('negative', 'c105050' , range);
+          console.log("anotacion "+ aux);
+        }
+
+      }
+    }
+
+    console.log(this.totalComentarios);
+  
 
   }
 
@@ -36,6 +92,14 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
     this.object = this.service.getObject();
 
     this.service.getSwell().Editor.configure({});
+
+    this.service.getSwell().Editor.AnnotationRegistry.define('comment', 'com', {});
+    console.log("comment creado");
+    this.service.getSwell().Editor.AnnotationRegistry.define('positive', 'pos', {});
+    console.log("positive creado");
+    this.service.getSwell().Editor.AnnotationRegistry.define('negative', 'neg', {});
+    console.log("negative creado");
+
 
 
     if (!this.editor) {
