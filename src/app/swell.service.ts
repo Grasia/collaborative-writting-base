@@ -15,6 +15,7 @@ private editor:any;
 private range:any;
 private selection:any;
 
+
 public setEditor(ed):void{
 
     this.editor = ed;
@@ -126,7 +127,13 @@ public promise() {
                 swell.onReady((_service) => {
                     this.service = _service;
                     window.service = this.service;
+                    swell.Editor.configure({});
+                    swell.Editor.AnnotationRegistry.define('mapa', 'map', {});
+                    swell.Editor.AnnotationRegistry.define('comment', 'com', {});
+                    
+                    console.log("Hecho la config");
                     resolve(this.service);
+
                 });
 
                 setTimeout(() => { reject(new Error('Error loading swellrt client: timeout'));

@@ -77,14 +77,46 @@ body {
 
 }
 
-.positive{
+span[data\:mapa*='+1']{
 
-  background-color: blue;
+  color: rgb(144, 199, 250);
+  background-color: white;
 
 }
-.negative{
 
-  background-color: red;
+span[data\:mapa*='+2']{
+
+  color: rgb(62, 122, 252);
+  background-color: white;
+
+}
+
+span[data\:mapa*='+3']{
+
+  color: rgb(0, 4, 255);
+  background-color: white;
+
+}
+
+
+span[data\:mapa*='-1']{
+
+  color: rgb(255, 129, 129);
+  background-color: white;
+
+}
+
+span[data\:mapa*='-2']{
+
+  color: rgb(255, 72, 72);
+  background-color: white;
+
+}
+
+span[data\:mapa*='-3']{
+
+  color: rgb(255, 0, 0);
+  background-color: white;
 
 }
 /* You can add global styles to this file, and also import other style files */

@@ -76,7 +76,6 @@ export class TextoComponent implements OnInit, OnDestroy {
     console.log('Seleccion capturada en rango ' + range);
     // recoge anotaciones en ese rango si las tiene;
     console.log(this.service.getSwell().Range.ALL);
-    console.log("anotaciones: " + this.editor.getAnnotations('comment', this.service.getSwell().Range.ALL))
     const anotComentarios = this.editor.getAnnotations('comment').comment;
 
     // si hay anotacion y dentro de la anotacion hay comentarios concretos.
@@ -152,16 +151,17 @@ export class TextoComponent implements OnInit, OnDestroy {
 
     this.object = this.service.getObject();
     window.object = this.object; // Solo para depurar
-    this.service.getSwell().Editor.configure({});
+    //this.service.getSwell().Editor.configure({});
 
     // define() requiere tres parametros
-    this.service.getSwell().Editor.AnnotationRegistry.define('comment', 'com', {
+    //this.service.getSwell().Editor.AnnotationRegistry.define('comment', 'com', {
 
      
 
-    });
+    //});
 
     if (!this.editor) {
+      
       this.editor = this.service.getSwell().Editor.create(document.getElementById('editor'));
       this.service.setEditor(this.editor);
       // establecer el selection hanlder sólo una vez,
@@ -171,9 +171,11 @@ export class TextoComponent implements OnInit, OnDestroy {
 
       this.editor.setSelectionHandler((range, editor, selection) => {
 
-         this.editor.clearAnnotation('comment');
+        /* this.editor.clearAnnotation('comment');
          this.object.delete('comments');
-         //this.selectionHandler(range, editor, selection);
+         this.editor.clearAnnotation('negative');
+         this.editor.clearAnnotation('positive');*/
+         this.selectionHandler(range, editor, selection);
 
       });
 
@@ -181,15 +183,16 @@ export class TextoComponent implements OnInit, OnDestroy {
 
     this.text = this.service.getSwell().Text.create('Texto vacio');
 
-
     if (!this.object.node('text')) {
       this.object.set('text', this.text);
     }
+
 
     console.log(this.object.node('text'));
     this.text = this.service.getObject().get('text');
     this.editor.set(this.text);
     this.editor.edit(true);
+    
 
   }
 

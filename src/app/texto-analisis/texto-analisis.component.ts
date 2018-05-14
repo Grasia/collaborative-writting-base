@@ -25,24 +25,34 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
 
   mapaCalor(){
     var anotaciones =  this.editor.getAnnotations('comment', this.service.getSwell().Range.ALL).comment;
+    console.log(this.editor.getAnnotations('mapa', this.service.getSwell().Range.ALL).mapa);
     var range = this.service.getSwell().Range.ALL;
     var comentarios: any;
     this.totalComentarios = 0;
     console.log(range);
     console.log(anotaciones);
+    this.editor.clearAnnotation('mapa', this.service.getSwell().Range.ALL);
+    console.log(this.editor.getAnnotations('mapa', this.service.getSwell().Range.ALL).mapa);
 
-    this.service.getSwell().Editor.AnnotationRegistry.define('negative', 'neg', {});
-    aux = this.service.getEditor().setAnnotation('negative', 'c105050' , range);
-    console.log("anotacion "+ aux);
+    for(var i = 0; i < anotaciones.length; i++){
+      comentarios = this.service.getObject().node('comments').node(anotaciones[i].value).get('posts');
+      for(var j = 0; j < comentarios.length; j++){
+
+        this.totalComentarios++;
+
+      }
+
+    }
+
+    console.log(this.totalComentarios);
 
     if(anotaciones){
       for(var i = 0; i < anotaciones.length; i++){
-        this.editor.clearAnnotation('negative');
-        this.editor.clearAnnotation('positive');
         var voto = 0;
-        var aux;
+        var aux: any;
         comentarios = this.service.getObject().node('comments').node(anotaciones[i].value).get('posts');
         console.log("-----anotacion " + i);
+
         for(var j = 0; j < comentarios.length; j++){
           console.log("--comentario " + j);
           if(comentarios[j].vote == 'positive'){
@@ -56,7 +66,6 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
             voto--;
 
           }
-          this.totalComentarios++;
         }
 
         var anotRange = {
@@ -69,38 +78,46 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
         console.log(anotRange);
 
         if(voto > 0){
-          console.log("positivo " + anotaciones[i].value + " " + anotRange);
-          aux = this.service.getEditor().setAnnotation('positive', 'c500', range);
-          console.log("anotacion: " + aux);
+
+          if(voto > this.totalComentarios * 0.50){
+
+            aux = this.editor.setAnnotation('mapa', '+3', anotRange);
+
+          }else if(voto > this.totalComentarios * 0.30 && voto >= this.totalComentarios * 0.50 ){
+
+            aux = this.editor.setAnnotation('mapa', '+2', anotRange);
+
+          }else aux = this.editor.setAnnotation('mapa', '+1', anotRange);
+
+          
         }else{
-          console.log("negativo " + anotaciones[i].value + " " + anotRange);
-          aux = this.service.getEditor().setAnnotation('negative', 'c105050' , range);
-          console.log("anotacion "+ aux);
+
+          if(voto * -1 > this.totalComentarios * 0.50){
+
+            aux = this.editor.setAnnotation('mapa', '-3', anotRange);
+
+          }else if(voto * -1 > this.totalComentarios * 0.30 && voto >= this.totalComentarios * 0.50 ){
+
+            aux = this.editor.setAnnotation('mapa', '-2', anotRange);
+
+          }else aux = this.editor.setAnnotation('mapa', '-1', anotRange);
         }
+        console.log(aux);
 
       }
     }
 
-    console.log(this.totalComentarios);
+    //this.editor.clearAnnotation('mapa', this.service.getSwell().Range.ALL);
+
+
   
 
   }
 
   ngOnInit(){
 
-
+    
     this.object = this.service.getObject();
-
-    this.service.getSwell().Editor.configure({});
-
-    this.service.getSwell().Editor.AnnotationRegistry.define('comment', 'com', {});
-    console.log("comment creado");
-    this.service.getSwell().Editor.AnnotationRegistry.define('positive', 'pos', {});
-    console.log("positive creado");
-    this.service.getSwell().Editor.AnnotationRegistry.define('negative', 'neg', {});
-    console.log("negative creado");
-
-
 
     if (!this.editor) {
       this.editor = this.service.getSwell().Editor.create(document.getElementById('editor'));
@@ -131,9 +148,9 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
 
     this.text = this.service.getObject().get('text');
     this.editor.set(this.text);
-    this.editor.edit(false);
-
+    this.editor.edit(true);
     this.mapaCalor();
+    this.editor.edit(false);
 
   }
 
