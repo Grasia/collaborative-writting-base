@@ -1,5 +1,6 @@
 <div>
-    <h1>¡Pagina de login!</h1>
+    <h1 *ngIf = "!isLog()">¡Inicia sesión!</h1>
+    <h1 *ngIf = "isLog()">¿Seguro que quiere cerrar sesión?</h1>
     
 </div>
 

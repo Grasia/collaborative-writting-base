@@ -1,28 +1,57 @@
 
 .general{
     
-text-align: center;
+    /*background-color: #262626;*/
+    background-color:cornflowerblue;
+    
+    height: 100%;
+    padding-bottom: 5px;
+    padding-top: 5px;
         
+}
+
+.logo{
+    
+    /*background-color: red;*/
+    vertical-align: middle;
+    margin-left: 10px;
+    
+}
+
+.botones{
+    font-family: "Old Standard TT";
+    vertical-align: middle;
+    /*background-color: deeppink;*/
+    
+}
+
+.login{
+    padding-right: 10px;
+    float: right;
+    font-family: "Old Standard TT";
+    
 }
 
 .cuerpo{
     
     text-align: center;
-    margin-top: 200px;
+    margin-top: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
     
 }
 
 nav a{
-  vertical-align: middle;
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 20px;
-  display: inline-block;
-  background-color: white;
-  border-radius: 4px;
-  font-size: 25px;
+
+    text-decoration: none;
+    margin: 10px;
+    font-size: 25px;
+    /*color: #aaa;*/
+    color: white;
+    
 }
-nav a:visited, a:link {
+
+/*nav a:visited, a:link {
   color: #607D8B;
 }
 nav a:hover {
@@ -32,4 +61,4 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }
-
+*/

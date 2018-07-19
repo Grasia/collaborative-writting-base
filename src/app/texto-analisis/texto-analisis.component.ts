@@ -77,13 +77,16 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
 
         console.log(anotRange);
 
-        if(voto > 0){
+        console.log(this.totalComentarios * 0.5);
+        console.log(this.totalComentarios * 0.3);
 
+        if(voto > 0){
+          console.log(voto);
           if(voto > this.totalComentarios * 0.50){
 
             aux = this.editor.setAnnotation('mapa', '+3', anotRange);
 
-          }else if(voto > this.totalComentarios * 0.30 && voto >= this.totalComentarios * 0.50 ){
+          }else if(voto > this.totalComentarios * 0.30 && voto <= this.totalComentarios * 0.50 ){
 
             aux = this.editor.setAnnotation('mapa', '+2', anotRange);
 
@@ -91,12 +94,12 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
 
           
         }else{
-
+          console.log(voto*-1);
           if(voto * -1 > this.totalComentarios * 0.50){
 
             aux = this.editor.setAnnotation('mapa', '-3', anotRange);
 
-          }else if(voto * -1 > this.totalComentarios * 0.30 && voto >= this.totalComentarios * 0.50 ){
+          }else if(voto * -1 > this.totalComentarios * 0.30 && voto <= this.totalComentarios * 0.50 ){
 
             aux = this.editor.setAnnotation('mapa', '-2', anotRange);
 
@@ -108,7 +111,7 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
     }
 
     //this.editor.clearAnnotation('mapa', this.service.getSwell().Range.ALL);
-
+    
 
   
 
@@ -154,8 +157,17 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
 
   }
 
+  limpiarMapa(){
+    console.log("Antes:" +this.editor.getAnnotations('mapa', this.service.getSwell().Range.ALL).mapa);
+    this.editor.clearAnnotation('mapa', this.service.getSwell().Range.ALL);
+    console.log("Despues:" +this.editor.getAnnotations('mapa', this.service.getSwell().Range.ALL).mapa);
+  }
 
   ngOnDestroy(){
+
+    this.editor.edit(true);
+    this.limpiarMapa();
+    this.editor.edit(false);
 
     this.editor.clean();
 

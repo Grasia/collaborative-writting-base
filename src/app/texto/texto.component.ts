@@ -171,11 +171,10 @@ export class TextoComponent implements OnInit, OnDestroy {
 
       this.editor.setSelectionHandler((range, editor, selection) => {
 
-        /* this.editor.clearAnnotation('comment');
-         this.object.delete('comments');
-         this.editor.clearAnnotation('negative');
-         this.editor.clearAnnotation('positive');*/
-         this.selectionHandler(range, editor, selection);
+        //this.editor.clearAnnotation('comment');
+        //this.editor.clearAnnotation('mapa');
+        //this.object.delete('comments');
+        this.selectionHandler(range, editor, selection);
 
       });
 

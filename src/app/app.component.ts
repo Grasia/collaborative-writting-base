@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SwellService } from './swell.service';
-
+import { UserService} from './user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,12 +9,13 @@ import { SwellService } from './swell.service';
 
 export class AppComponent implements OnInit {
 
-  title = 'Carlos y Jorge';
+  title = 'Jorge';
 
 
-  constructor(private swellService: SwellService) {
+  constructor(private swellService: SwellService, private userService: UserService) {
 
   }
+    
 
   ngOnInit() {
 
@@ -23,10 +24,13 @@ export class AppComponent implements OnInit {
       .catch( error => { console.log('ERROR loading SwellRT!'); });
 
       
-    
-
-
   }
+    
+    isLog(){
+
+        return this.userService.isLog();
+
+    }
 
 
 }

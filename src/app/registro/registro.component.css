@@ -1,10 +1,18 @@
 .example-form {
+    
     min-width: 150px;
     max-width: 300px;
     width: 100%;
     display: inline-block;
     text-align: center;
     margin-top: 50px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-color: cornflowerblue;
+    border-radius: 20px;
+    border-width: 1.5px;
+    padding: 30px;
+    color: cornflowerblue;
   }
   
   .example-full-width {
@@ -15,5 +23,5 @@
   .boton{
       
       color:#60708B;
-      
+      font-family: "Old Standard TT";
   }
