@@ -1,9 +1,16 @@
 .pantalla{
-    
-    text-align: center;
-    display: block;
-    
-    
+
+  width: 100%;
+  float: left;
+  text-align: center;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-color: cornflowerblue;
+  border-radius: 20px;
+  border-width: 1.5px;
+  padding: 30px;
+  color: cornflowerblue;
+  
 }
 
 
@@ -17,15 +24,15 @@ a {
 
 
 .documento {
-  padding: 20px;
+  min-width: 100px;
+  margin: 15px;
   text-align: center;
   color: #eee;
-  max-height: 120px;
-  min-width: 120px;
-  max-width: 80px;
-  background-color: #607D8B;
+  background-color: cornflowerblue;
   border-radius: 2px;
-  margin-bottom: 10px;
+  max-width: 150px;
+  padding: 30px 0px 30px 0px;
+  
 }
 .documento:hover {
   background-color: #EEE;

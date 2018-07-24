@@ -1,13 +1,14 @@
-<h1>¡Si ves esto, tu rol es de Usuario!</h1>
 <div class="pantalla" *ngIf="docService.documentos.length">
-
-    <h2>Documentos</h2>
+    <h1>¡Documentos en los que participas!</h1>
     
-    <a class = "doc" [routerLink] = "['/documento']" [queryParams] = "{id: doc.id , x:'0'}" queryParamsHandling="merge" *ngFor='let doc of docService.documentos'>
-        <div class="documento" *ngIf="comprueba(doc)">
-            <h4>{{doc.nombre}}</h4>
-        </div>
-    </a>
-
+    <div class= "row">
+        <ng-container class = "doc" *ngFor='let doc of docService.documentos'>
+            <a class="col-lg-2"  [routerLink] = "['/documento']" [queryParams] = "{id: doc.id , x:'0'}" queryParamsHandling="merge"  *ngIf="comprueba(doc)">
+                <div class="documento">
+                    <h4>{{doc.nombre}}</h4>
+                </div>
+            </a>
+        </ng-container>
+    </div>
 </div>
     

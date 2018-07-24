@@ -10,33 +10,31 @@
 
 .izq{
    
-    margin-top: 10px;
+    padding: 20px;
     float: left;
-    text-align: left
+    text-align: left;
+    
 }
 
 .der{
-    
-    
- 
+
     float: right;
-    
-    
+    padding: 20px;
+
 }
 
-.bot{
+.info{
     
     text-align: left;
-
-    
-}
-
-.mat-tab-label{
-    
-    
-    font-size: 30px;
-    
-    
+    width: 100%;
+    float: left;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-color: cornflowerblue;
+    border-radius: 20px;
+    border-width: 1.5px;
+    padding: 30px;
+    color: cornflowerblue;
 }
 
 .example-form {
@@ -50,9 +48,6 @@
     width: 100%;
   }
   
-  .boton{
-      
+  .boton{   
       color:#60708B;
-  
-
   }

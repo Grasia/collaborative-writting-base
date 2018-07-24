@@ -1,10 +1,21 @@
+<div class = "row">
+    <div class="col-lg-2">
+        <div *ngIf="isLog()">
+            <app-toggle></app-toggle>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div *ngIf="!isLog()">
+            <h1>¡Haz Login para ver este apartado!</h1>
+            <app-login-input></app-login-input>
+        </div>
+        <div *ngIf="isLog()">
+            
+            <app-usuario *ngIf="!isAdmin()"></app-usuario>
+            <app-admin *ngIf="isAdmin()"></app-admin>
+        </div>
+    </div>
+    <div class="col-lg-2">
 
-<div *ngIf="!isLog()">
-    <h1>¡Haz Login para ver este apartado!</h1>
-    <app-login-input></app-login-input>
-</div>
-<div *ngIf="isLog()">
-<app-toggle></app-toggle>
-<app-usuario *ngIf="!isAdmin()"></app-usuario>
-<app-admin *ngIf="isAdmin()"></app-admin>
+    </div>
 </div>
