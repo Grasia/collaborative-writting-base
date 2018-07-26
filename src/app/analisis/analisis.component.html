@@ -1,18 +1,20 @@
-<h1>Esta es la vista de analisis</h1>
-<div class = 'bloque'>
-    <div class = 'margenIz'>Margen izquierdo<br>
+<div class = "row titulo">
+    <h1 class = "col-lg-12">{{getTitulo()}}</h1>
+</div>
+<div class = 'row doc'>
+    <div class = 'col-lg-2'>
         <div class = 'fase'>
             <button (click)="documentos()" class='boton' mat-raised-button>Volver</button>
         </div>
     </div>
     
-    <div class = 'centro'> Centro
+    <div class = 'col-lg-8'>
     
         <app-texto-analisis></app-texto-analisis>
     
     </div>
     
-    <div class = 'margenDr'>Margen derecho 
+    <div class = 'col-lg-2'>
         <div class="fase" *ngIf = "isAdmin()">
             Fase:<a class = "doc" [routerLink] = "['/documento']" [queryParams] = "{id: getId() , x:'1'}">
                 {{getFase()}}

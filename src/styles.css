@@ -30,28 +30,6 @@ body {
   float: right;
 }
 
-.margenIz{
-    
-    width: 20%;
-    float: left;
-    margin-right: 5%;
-    display: inline-block;
-}
-
-.centro{
-    margin-left: 2.5%;
-    margin-right: 2.5%;
-    width: 45%;
-    display: inline-block;
-    
-}
-.margenDr{
-    display: inline-block;
-    margin-left: 5%;
-    width: 20%;
-    float: right;
-    
-}
 
 .texto{
    

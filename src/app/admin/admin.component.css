@@ -1,5 +1,4 @@
 .pantalla{
-
     width: 100%;
     float: left;
     text-align: center;
@@ -20,6 +19,7 @@
 
 
 .documento {
+
   min-width: 100px;
   margin: 15px;
   text-align: center;
@@ -28,6 +28,9 @@
   border-radius: 2px;
   max-width: 150px;
   padding: 30px 0px 30px 0px;
+  box-shadow: 5px 10px 8px #888888;
+  border: 1px solid;
+  border-color: rgba(0, 0, 0, 0.233);
   
 }
 

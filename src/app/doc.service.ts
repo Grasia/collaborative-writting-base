@@ -93,6 +93,12 @@ export class DocService {
         return this.activo.etapa;
         
     }
+
+    getTitulo():string{
+
+        return this.activo.nombre;
+
+    }
     
     
     add(titulo:string, creador:string){

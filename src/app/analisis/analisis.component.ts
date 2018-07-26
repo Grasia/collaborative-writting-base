@@ -30,6 +30,12 @@ export class AnalisisComponent implements OnInit {
 
     }
 
+    getTitulo():string{
+
+        return this.docService.getTitulo();
+
+    }
+
 
     isAdmin():boolean{
         

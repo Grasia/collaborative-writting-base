@@ -1,18 +1,25 @@
 .boton{
     
     color:#60708B;
-    margin-top: 5%;
+
 }
 
-.fase{
-    
-    margin-top: 10%;
-    
-}
 
 .comment{
 
     background-color: rgba(229, 232, 42, 0.7);
     
   
+  }
+
+  .titulo{
+
+    margin-top: 50px;
+
+  }
+
+  .doc{
+
+    margin-top: 50px;
+
   }

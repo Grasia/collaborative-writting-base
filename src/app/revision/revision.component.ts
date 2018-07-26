@@ -47,6 +47,12 @@ export class RevisionComponent implements OnInit {
         }
 
     }
+
+    getTitulo():string{
+
+        return this.docService.getTitulo();
+
+    }
     
     isAdmin():boolean{
         
