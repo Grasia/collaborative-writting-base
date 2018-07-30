@@ -191,6 +191,7 @@ export class TextoComponent implements OnInit, OnDestroy {
     this.text = this.service.getObject().get('text');
     this.editor.set(this.text);
     this.editor.edit(true);
+    console.log("deberias porder editar");
     
 
   }

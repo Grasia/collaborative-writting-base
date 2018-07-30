@@ -5,14 +5,29 @@
   display: inline-block;
   text-align: center;
   margin-top: 50px;
+  width: 100%;
+  text-align: center;
+  border-right-style: solid;
+  border-left-style: solid;
+  border-color: cornflowerblue;
+  border-radius: 20px;
+  border-width: 1.5px;
+  padding: 30px;
+  color: cornflowerblue;
 }
 
 .example-full-width {
     margin-top: 10px;
-  width: 100%;
+    width: 100%;
 }
 
 
 .boton{
   color: #607D8B;
+}
+
+.titulo{
+
+  margin-top: 30px;
+
 }

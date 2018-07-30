@@ -2,27 +2,31 @@
     <h1 class = "col-lg-12">{{getTitulo()}}</h1>
 </div>
 <div class = 'row doc'>
-    <div class = 'col-lg-2'>Margen izquierdo<br>
+    <div class = 'col-lg-2'>
         <div class = 'fase'>
             <button (click)="documentos()" class='boton' mat-raised-button>Volver</button>
         </div>
     </div>
     <div class = 'col-lg-8'>
-        <app-texto></app-texto>
+        <div class = "texto">
+            <app-texto></app-texto>
+        </div>
     </div>
-    <div class = 'col-lg-2'>Margen derecho<br>
-    
-        <app-opinar *ngIf="isOpinar()"></app-opinar><br><br>
-        <div *ngIf = "isComent()">
-            Comentarios ya hechos: <br><br>
-            <div *ngFor = 'let coment of coments'>
-                {{coment.text}}
-                <br>
-                {{coment.name}}
-                <br><br>
+    <div class = 'col-lg-2'>
+        <div class = "row">
+
+        <app-opinar class = "col-lg-12" *ngIf="isOpinar()"></app-opinar>
+        <div class = "row" *ngIf = "isComent()">
+            <h4 class = "col-lg-12">Comentarios ya hechos</h4>
+            <div class = "col-lg-12" *ngFor = 'let coment of coments'>
+                <p>{{coment.text}}</p>
+                
+                <p>{{coment.name}}</p>
+                
 
             </div>
 
+        </div>
 
         </div>
         <div class="fase" *ngIf = "isAdmin()">

@@ -1,15 +1,13 @@
-<div>
-    <br><br>
-    <mat-form-field>
+<div class = "row">
+    
+    <mat-form-field class = "col-lg-12">
         <mat-select placeholder = "voto" #voto>
                 <mat-option value = "positive">Positivo</mat-option>  
                 <mat-option value = "negative">Negativo</mat-option>
         </mat-select>
     </mat-form-field>
 
-    <br><br>
-
-    <mat-form-field class='opinar'>
+    <mat-form-field class = "col-lg-12">
 
         <textarea  matInput placeholder="Opinion" matTextareaAutosize matAutosizeMinRows="1"
                 matAutosizeMaxRows="20" #opinion>
@@ -17,7 +15,8 @@
 
     </mat-form-field>
     
-    <button class='boton' mat-raised-button (click)="comentar(voto.value, opinion.value)">Enviar</button>
-    <div *ngIf = "enviado()">{{send}}</div>
-    <div>{{comentarios}}</div>
+    <button class='col-lg-12 boton' mat-raised-button (click)="comentar(voto.value, opinion.value)">Enviar</button><br>
+    <div class = "col-lg-12" *ngIf = "enviado()">{{send}}</div>
+    <div class = "col-lg-12">{{comentarios}}</div>
+
 </div>

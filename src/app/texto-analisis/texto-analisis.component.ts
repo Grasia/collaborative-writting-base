@@ -33,15 +33,17 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
     console.log(anotaciones);
     this.editor.clearAnnotation('mapa', this.service.getSwell().Range.ALL);
     console.log(this.editor.getAnnotations('mapa', this.service.getSwell().Range.ALL).mapa);
+    
+    if(anotaciones){
+      for(var i = 0; i < anotaciones.length; i++){
+        comentarios = this.service.getObject().node('comments').node(anotaciones[i].value).get('posts');
+        for(var j = 0; j < comentarios.length; j++){
 
-    for(var i = 0; i < anotaciones.length; i++){
-      comentarios = this.service.getObject().node('comments').node(anotaciones[i].value).get('posts');
-      for(var j = 0; j < comentarios.length; j++){
+          this.totalComentarios++;
 
-        this.totalComentarios++;
+        }
 
       }
-
     }
 
     console.log(this.totalComentarios);
