@@ -4,7 +4,7 @@
 h1{
     
     color: #6495ed;
-    text-shadow: 1px 2px #6495ed63;
+    
     
 }
 
@@ -12,8 +12,8 @@ body {
     
     background-color: whitesmoke;
     /*background: #383737;*/
-    /*font-family: Roboto, Arial, sans-serif;*/
-    font-family: "Old Standard TT";
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    /*font-family: "Old Standard TT";*/
     margin: 0;
     /*color:  #aaa;*/
     color: black;

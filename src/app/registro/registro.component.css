@@ -9,7 +9,6 @@
     border-right-style: solid;
     border-left-style: solid;
     border-color: cornflowerblue;
-    border-radius: 20px;
     border-width: 1.5px;
     padding: 30px;
     color: cornflowerblue;
@@ -23,5 +22,6 @@
   .boton{
       
       color:#60708B;
-      font-family: "Old Standard TT";
+      /*font-family: "Old Standard TT";*/
+      font-family: Roboto,Helvetica,Arial,sans-serif;
   }

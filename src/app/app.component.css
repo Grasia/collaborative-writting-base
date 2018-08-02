@@ -19,7 +19,8 @@
 }
 
 .botones{
-    font-family: "Old Standard TT";
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    /*font-family: "Old Standard TT";*/
     vertical-align: middle;
     /*background-color: deeppink;*/
     
@@ -28,7 +29,8 @@
 .login{
     padding-right: 10px;
     float: right;
-    font-family: "Old Standard TT";
+    /*font-family: "Old Standard TT";*/
+    font-family: Roboto,Helvetica,Arial,sans-serif;
     
 }
 

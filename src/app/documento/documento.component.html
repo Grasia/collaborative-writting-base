@@ -8,8 +8,14 @@
             
             <div class="info">
 
-                <h2> Titulo: {{getNombre()}} </h2>
-                <h3> Fase: {{etapa()}} </h3>
+                <div class = "row fas">
+                    <h2 class = "col-lg-3"> {{getNombre()}}</h2> 
+                    <button class = "col-lg-3" (click)="verDoc()" class='boton' mat-raised-button>Ver documento</button>
+                </div>
+                <div class = "row fas">
+                    <h2 class = "col-lg-1"> Fase: </h2> 
+                    <h2 class = "col-lg-1 sub">{{etapa()}} </h2>
+                </div>
             
                 <mat-tab-group selectedIndex = {{x}}>
 
@@ -81,7 +87,7 @@
 
         <div class = "col-lg-2">
 
-            <button (click)="verDoc()" class='boton' mat-raised-button>Ver documento</button>
+        
 
         </div>
     </div>
