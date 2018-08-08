@@ -2,12 +2,15 @@
     <h1>¡Documentos en los que participas!</h1>
     
     <div class= "row">
-        <ng-container class = "doc" *ngFor='let doc of docService.documentos'>
-            <a class="col-lg-3"  [routerLink] = "['/documento']" [queryParams] = "{id: doc.id , x:'0'}" queryParamsHandling="merge"  *ngIf="comprueba(doc)">
+        <ng-container *ngFor='let doc of docService.documentos'>
+            <div class="col-lg-3 doc" *ngIf="comprueba(doc)">
                 <div class="documento">
-                    <h4>{{doc.nombre}}</h4>
+                    <div [routerLink] = "['/documento']" [queryParams] = "{id: doc.id , x:'0'}" queryParamsHandling="merge">
+                        <img src="assets/img/file.png" alt="logo" class = "logo" height="75">
+                        <h5>{{doc.nombre}}</h5>
+                    </div>
                 </div>
-            </a>
+            </div>
         </ng-container>
     </div>
 </div>

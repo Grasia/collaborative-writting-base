@@ -19,9 +19,19 @@ export class RevisionComponent implements OnInit {
                 private userService:UserService) { }
 
     ngOnInit() {
+        
+        if(!this.isLog()) this.router.navigate(['/participar'], {replaceUrl: true});
+        else{
+            this.opinion = false;
+            this.coments = [];
+        }
+    }
 
-        this.opinion = false;
-        this.coments = [];
+
+    isLog():boolean{
+        console.log(this.userService.isLog());
+        return this.userService.isLog();
+
     }
 
     vaciarComentarios(){

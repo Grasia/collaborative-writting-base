@@ -43,6 +43,12 @@ export class UserService {
   
   }
 
+  getRol(){
+
+    return this.user.rol;
+
+  }
+
 
   getName(){
       

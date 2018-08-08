@@ -14,6 +14,9 @@ export class AnalisisComponent implements OnInit {
                 private userService:UserService) { }
 
     ngOnInit() {
+
+        if(!this.userService.isLog()) this.router.navigate(['/participar'], {replaceUrl: true});
+
     }
 
     siguiente():void{

@@ -5,6 +5,7 @@ import { DocService } from '../doc.service';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { SwellService } from '../swell.service';
+import { isLoweredSymbol } from '../../../node_modules/@angular/compiler';
 
 @Component({
   selector: 'app-documento',
@@ -45,6 +46,8 @@ export class DocumentoComponent implements OnInit{
 
     ngOnInit(){
         
+        if(!this.isLog()) this.router.navigate(['/participar'], {replaceUrl: true});
+
         this.route.queryParams
         .subscribe(params => {
             this.id = params.id;
@@ -142,6 +145,16 @@ export class DocumentoComponent implements OnInit{
            
     }
     
+    probar(){
+
+        if(this.isLog()){
+
+            return true;
+
+        }else this.router.navigate(['/participar'], {replaceUrl: true});
+
+    }
+
     isLog(){
            
         return this.userService.isLog();

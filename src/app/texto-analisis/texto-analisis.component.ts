@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SwellService } from '../swell.service';
+import { UserService } from '../user.service';
+import { Router } from '../../../node_modules/@angular/router';
 
 
 @Component({
@@ -14,7 +16,7 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
   private editor: any;
   private totalComentarios: number;
 
-  constructor(private service: SwellService) { }
+  constructor(private service: SwellService, private user:UserService, private router:Router) { }
 
   selectionHandler(range, editor, selection) {
 
@@ -121,42 +123,43 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
 
   ngOnInit(){
 
-    
-    this.object = this.service.getObject();
+    if(!this.user.isLog()) this.router.navigate(['/participar'], {replaceUrl: true});
+    else{
+      this.object = this.service.getObject();
 
-    if (!this.editor) {
-      this.editor = this.service.getSwell().Editor.create(document.getElementById('editor'));
+      if (!this.editor) {
+        this.editor = this.service.getSwell().Editor.create(document.getElementById('editor'));
 
-      this.service.setEditor(this.editor);
-      // establecer el selection hanlder sólo una vez,
-      // despues de crear el editor.
-      // para simplificar el codigo fuente, llevar el codigo
-      // del handler a un meto
+        this.service.setEditor(this.editor);
+        // establecer el selection hanlder sólo una vez,
+        // despues de crear el editor.
+        // para simplificar el codigo fuente, llevar el codigo
+        // del handler a un meto
 
-      this.editor.setSelectionHandler((range, editor, selection) => {
-        console.log("no entra porque no es editableee");
-        // this.editor.clearAnnotation('comment');
-        // this.object.delete('comments');
-          this.selectionHandler(range, editor, selection);
+        this.editor.setSelectionHandler((range, editor, selection) => {
+          console.log("no entra porque no es editableee");
+          // this.editor.clearAnnotation('comment');
+          // this.object.delete('comments');
+            this.selectionHandler(range, editor, selection);
 
-      });
+        });
 
+      }
+
+      this.text = this.service.getSwell().Text.create('Texto vacio');
+
+
+      if (!this.object.node('text')) {
+        this.object.set('text', this.text);
+      }
+
+
+      this.text = this.service.getObject().get('text');
+      this.editor.set(this.text);
+      this.editor.edit(true);
+      this.mapaCalor();
+      this.editor.edit(false);
     }
-
-    this.text = this.service.getSwell().Text.create('Texto vacio');
-
-
-    if (!this.object.node('text')) {
-      this.object.set('text', this.text);
-    }
-
-
-    this.text = this.service.getObject().get('text');
-    this.editor.set(this.text);
-    this.editor.edit(true);
-    this.mapaCalor();
-    this.editor.edit(false);
-
   }
 
   limpiarMapa(){
@@ -167,12 +170,13 @@ export class TextoAnalisisComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(){
 
-    this.editor.edit(true);
-    this.limpiarMapa();
-    this.editor.edit(false);
+    if(this.user.isLog()){
+      this.editor.edit(true);
+      this.limpiarMapa();
+      this.editor.edit(false);
 
-    this.editor.clean();
-
+      this.editor.clean();
+    }
   }
 
 }

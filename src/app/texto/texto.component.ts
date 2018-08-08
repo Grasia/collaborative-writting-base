@@ -4,6 +4,7 @@ import { SwellService } from '../swell.service';
 import { isUndefined } from 'util';
 import { RevisionComponent } from '../revision/revision.component';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 declare let window: any; // para depuracion sucia en consola
 declare let document: any;
@@ -24,7 +25,7 @@ export class TextoComponent implements OnInit, OnDestroy {
   idComentario: string;
 
   constructor(private docService: DocService, private service: SwellService, 
-    private general: RevisionComponent, private user: UserService) { }
+    private general: RevisionComponent, private user: UserService, private router: Router) { }
 
 
   /**
@@ -149,56 +150,62 @@ export class TextoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.object = this.service.getObject();
-    window.object = this.object; // Solo para depurar
-    //this.service.getSwell().Editor.configure({});
+    if(!this.user.isLog()) this.router.navigate(['/participar'], {replaceUrl: true});
+    else{
+      this.object = this.service.getObject();
+      window.object = this.object; // Solo para depurar
+      //this.service.getSwell().Editor.configure({});
 
-    // define() requiere tres parametros
-    //this.service.getSwell().Editor.AnnotationRegistry.define('comment', 'com', {
+      // define() requiere tres parametros
+      //this.service.getSwell().Editor.AnnotationRegistry.define('comment', 'com', {
 
-     
-
-    //});
-
-    if (!this.editor) {
       
-      this.editor = this.service.getSwell().Editor.create(document.getElementById('editor'));
-      this.service.setEditor(this.editor);
-      // establecer el selection hanlder sólo una vez,
-      // despues de crear el editor.
-      // para simplificar el codigo fuente, llevar el codigo
-      // del handler a un metodo
 
-      this.editor.setSelectionHandler((range, editor, selection) => {
+      //});
+      
 
-        //this.editor.clearAnnotation('comment');
-        //this.editor.clearAnnotation('mapa');
-        //this.object.delete('comments');
-        this.selectionHandler(range, editor, selection);
+      if (!this.editor) {
+        
+        this.editor = this.service.getSwell().Editor.create(document.getElementById('editor'));
+        this.service.setEditor(this.editor);
+        // establecer el selection hanlder sólo una vez,
+        // despues de crear el editor.
+        // para simplificar el codigo fuente, llevar el codigo
+        // del handler a un metodo
 
-      });
+        this.editor.setSelectionHandler((range, editor, selection) => {
 
+          //this.editor.clearAnnotation('comment');
+          //this.editor.clearAnnotation('mapa');
+          //this.object.delete('comments');
+          this.selectionHandler(range, editor, selection);
+
+        });
+
+      }
+
+      this.text = this.service.getSwell().Text.create('Texto vacio');
+
+      if (!this.object.node('text')) {
+        this.object.set('text', this.text);
+      }
+
+
+      console.log(this.object.node('text'));
+      this.text = this.service.getObject().get('text');
+      this.editor.set(this.text);
+      this.editor.edit(true);
+      console.log("deberias porder editar");
     }
-
-    this.text = this.service.getSwell().Text.create('Texto vacio');
-
-    if (!this.object.node('text')) {
-      this.object.set('text', this.text);
-    }
-
-
-    console.log(this.object.node('text'));
-    this.text = this.service.getObject().get('text');
-    this.editor.set(this.text);
-    this.editor.edit(true);
-    console.log("deberias porder editar");
-    
 
   }
 
   ngOnDestroy(): void {
 
-    this.editor.clean();
+    if(this.user.isLog()){
+      this.editor.clean();
+      console.log("Todo limpio.");
+    }
 
   }
 

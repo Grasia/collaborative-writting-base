@@ -54,6 +54,16 @@ export class ToggleComponent implements OnInit{
         }
     
     }
+
+    rol():string{
+
+        if(this.userService.getRol() == "admin"){
+
+            return "Mis documentos";
+
+        }else return "Participando";
+
+    }
   
 }
 
