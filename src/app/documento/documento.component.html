@@ -9,12 +9,12 @@
             <div class="info">
 
                 <div class = "row fas">
-                    <h2 class = "col-lg-3"> {{getNombre()}}</h2> 
+                    <h2 class = "col-lg-4"> {{getNombre()}}</h2> 
                     <button class = "col-lg-3" (click)="verDoc()" class='boton' mat-raised-button>Ver contenido</button>
                 </div>
                 <div class = "row fas">
-                    <h2 class = "col-lg-1"> Fase: </h2> 
-                    <h2 class = "col-lg-1 sub">{{etapa()}} </h2>
+                    <h2 class = "col-lg-12"> Fase: <B>{{etapa()}}</B></h2> 
+                    
                 </div>
             
                 <mat-tab-group selectedIndex = {{x}}>
@@ -23,9 +23,9 @@
                             
                             <div class="izq" *ngIf = "!isEdit()">
                                 
-                                Nombre: {{getNombre()}}<br><br> 
-                                Descripcion: {{getDes()}}<br><br>
-                                Referencias: {{getRefs()}}<br><br>
+                                <p>Nombre: {{getNombre()}}</p> 
+                                <p>Descripcion: {{getDes()}}</p>
+                                <p>Referencias: {{getRefs()}}</p>
                             </div>
 
                             <div class = "izq" *ngIf = "isEdit()">
@@ -54,11 +54,26 @@
                             </div>
                         </mat-tab>
                         <mat-tab label="Fases">
-                            <div>
-                                <div class="izq">Fechas especificadas para las diferentes fases del documento.</div>
-                                <div class="der" *ngIf = 'isAdmin()'>
-                                    <button (click)="siguiente()" class='boton' mat-raised-button>Siguiente fase</button><br><br>
-                                    <button (click)="fin()" *ngIf = 'isFin()' class='boton' mat-raised-button>Finalizar</button> 
+                            <div class = "row">
+                                <div class="izq col-lg-8">
+                                    <h4>Fases del documento.</h4>
+                                    <h5>Redacción inicial:</h5>
+                                    <p>Fase de reddacion del documento por parte de los expertos.</p>
+                                    <h5>Llamada a la participacion</h5>
+                                    <p>Difusión del documento e invitacion a participar en el para todos los posibles ususarios</p>
+                                    <h5>Revision colectiva</h5>
+                                    <p>Permite a todos los participantes aportar comentarios sobre el documento para su futura mejoría.</p>
+                                    <h5>Analisis de sugerencias</h5>
+                                    <p>Se genera un mapa de calor del texto a parte de diversas estadisticas para poder corregirlo acorde a los comentarios.</p>
+                                    <h5>Redaccion de cambios</h5>
+                                    <p>Correcion del documento a partir de las estadisticas generadas en la fase anterior para posibilitar un acercamiento a la opinion de los partiipantes.</p>
+                                    <h5>Redaccion final</h5>
+                                    <p>Una vez redactado un documento aceptable para todos los participantes, este se termina de redactar y se cierra.</p>
+
+                                </div>
+                                <div class="der col-lg-3" *ngIf = 'isAdmin()'>
+                                    <button (click)="siguiente()" class='boton fase' mat-raised-button>Siguiente fase</button><br><br>
+                                    <button (click)="fin()" *ngIf = 'isFin()' class='boton fase' mat-raised-button>Finalizar</button> 
                                 </div>
                             </div>
                         </mat-tab>
@@ -66,12 +81,6 @@
                             <br><br>
                             <div>
                                 Resumenes de votos, estadisticas etc
-                            </div>
-                        </mat-tab>
-                        <mat-tab label = "Versiones">
-                            <br><br>
-                            <div>
-                                Versiones del documento
                             </div>
                         </mat-tab>
                         <mat-tab label = "Admins">

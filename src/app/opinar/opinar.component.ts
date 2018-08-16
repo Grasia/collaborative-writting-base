@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DocService } from '../doc.service';
 import { SwellService } from '../swell.service';
 import { UserService } from '../user.service';
+import { RevisionComponent } from '../revision/revision.component';
 @Component({
   selector: 'app-opinar',
   templateUrl: './opinar.component.html',
@@ -15,7 +16,7 @@ export class OpinarComponent implements OnInit {
   idCom:any;
   comentarios:string;
 
-  constructor(private swell:SwellService, private user: UserService) { }
+  constructor(private swell:SwellService, private user: UserService, private general: RevisionComponent) { }
 
   ngOnInit() {
 
@@ -49,7 +50,7 @@ export class OpinarComponent implements OnInit {
       console.log(this.anotacion);
       this.configuraNodoComentarios(this.swell.getObject());
       this.configuraNodoDeComentario(this.swell.getObject(), this.idCom);
-
+      
 
     } else {
 
@@ -85,7 +86,7 @@ export class OpinarComponent implements OnInit {
       console.log("comentario añadido");
       console.log(this.swell.getObject().node('comments').node(this.swell.getAnotacion().value).get('posts'));
 
-
+    this.general.noOpinar();
     
   }
 

@@ -102,7 +102,7 @@ export class TextoComponent implements OnInit, OnDestroy {
 
     // selección vacia, no hacer nada
     if (range.start === range.end) {
-      console.log('seleccion de caca');
+
       this.general.noOpinar();
       return;
     }
